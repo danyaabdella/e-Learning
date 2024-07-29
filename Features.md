@@ -17,7 +17,7 @@ To set up the project, clone the repository and install the dependencies:
 
 ```bash
     `git clone https://github.com/ElayeDegu/todo-app.git`
-     cd eduopia
+     cd todo-app
     `npm install`
 ```
 
