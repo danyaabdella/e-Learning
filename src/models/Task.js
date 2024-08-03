@@ -1,10 +1,28 @@
-import mongoose from 'mongoose';
+import mongoose, { model } from 'mongoose';
 
-const taskSchema = new mongoose.Schema({
-  title: { type: String, required: true, unique: true },
-  description: { type: String },
+const taskSchema =( {
+    title: {
+    type: String,
+    required: true,
+    unique: true
+    }, 
+    description: {
+        type: String,
+        required: true,
+    },
+    dueDate:{
+        type: String,
+        required: true
+    },
+    priority: {
+        type: String,
+        required: true
+    }, 
+    category: {
+        type: String,
+        required: true
+    }
 });
 
-
-const Task = mongoose.models.Task || mongoose.model('Task', taskSchema);
+const Task = mongoose.model.user || mongoose.model("Task", taskSchema)
 export default Task;
