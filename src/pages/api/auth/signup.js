@@ -4,10 +4,11 @@ import db from '../../../utils/db';
 
 
 
-export default async (req, res) => {
+export default async function handler (req, res) {
   if (req.method === 'POST') {
     try {
       await db.connect();
+
 
       const { email, password } = req.body;
 
@@ -37,6 +38,7 @@ export default async (req, res) => {
     // }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
+    console.log('not found');
   }
 };
 

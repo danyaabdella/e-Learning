@@ -9,10 +9,11 @@ export default async (req, res) => {
         try {
             await db.connect();
 
-            const { email,password } = req.body;
+            const { email, password, newPassword} = req.body;
             const existingUser = await User.findOne({ email });
-            if(existingUser){
-                const hashedPassword = await bcrypt.hash(password, 12);
+
+            if(existingUser && bcrypt.compare(password, existingUser.password)){
+                const hashedPassword = await bcrypt.hash(newPassword, 12);
                 await User.findOneAndUpdate(
                 { email },
                 { $set: { password: hashedPassword } }
