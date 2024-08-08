@@ -1,13 +1,12 @@
 import bcrypt from 'bcryptjs';
 import User from '../../../models/User';
-import db from '../../../utils/db';
-
-
+import connect from '../../../utils/db';
 
 export default async function handler (req, res) {
+
   if (req.method === 'POST') {
     try {
-      await db.connect();
+      await connect();
 
 
       const { email, password } = req.body;
@@ -15,13 +14,12 @@ export default async function handler (req, res) {
       const existingUser = await User.findOne({ email });
       
       if (existingUser) {
-        // await db.disconnect();
         return res.status(422).json({ message: 'User already exists!' });
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      const newUser = new User({
+      const newUser = new user({
         email,
         password: hashedPassword,
       });
@@ -33,12 +31,11 @@ export default async function handler (req, res) {
       console.error('Signup error:', error);
       res.status(500).json({ message: 'Internal server error' });
     } 
-    // finally {
-    //   await db.disconnect();
-    // }
+    finally {
+
+    }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
     console.log('not found');
   }
 };
-
