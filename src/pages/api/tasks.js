@@ -1,4 +1,4 @@
-import Task from '../../../models/Task';
+import Task from '../../models/Task';
 import db from '../../../utils/db';
 
 export default async (req, res) => {

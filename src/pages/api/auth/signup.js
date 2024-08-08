@@ -2,11 +2,12 @@ import bcrypt from 'bcryptjs';
 import User from '../../../models/User';
 import connect from '../../../utils/db';
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
+export default async function handler (req, res) {
+
   if (req.method === 'POST') {
     try {
       await connect();
+
 
       const { email, password } = req.body;
 
@@ -35,5 +36,6 @@ export default async (req, res) => {
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
+    console.log('not found');
   }
 };
