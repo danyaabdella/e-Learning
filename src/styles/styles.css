@@ -1,0 +1,21 @@
+/* styles/styles.css */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px;
+  }
+  
+  .left,
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right {
+    text-align: center;
+  }
+  

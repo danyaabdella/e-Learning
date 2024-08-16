@@ -1,0 +1,43 @@
+.nav {
+    @apply bg-blue-300 p-4 font-serif;
+    /* @apply fixed top-0 left-0 w-full bg-blue-300 p-4 font-serif z-50; */
+}
+.contain {
+    @apply container mx-auto flex justify-between items-center;
+}
+/* .nav-text {
+    @apply rounded-full aspect-square object-cover;
+} */
+.text-space {
+    @apply space-x-4;
+}
+.text-color {
+    @apply text-white;
+}
+.profile-icon {
+    @apply relative inline-block;
+  }
+  
+  .circle {
+    @apply w-8 h-8 rounded-full bg-gray-800 text-white text-center leading-8 cursor-pointer;
+  }
+  
+  .dropdown-menu {
+    @apply absolute top-8 right-0 bg-white border border-gray-300 p-4 hidden;
+  }
+  
+  .profile-icon:hover .dropdown-menu {
+    @apply block;
+  }
+  
+  .dropdown-menu li {
+    @apply mb-4;
+  }
+  
+  .dropdown-menu li a {
+    @apply text-gray-800 no-underline;
+  }
+  
+  .dropdown-menu li a:hover {
+    @apply text-gray-600;
+  }

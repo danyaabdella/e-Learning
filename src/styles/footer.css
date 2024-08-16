@@ -1,0 +1,7 @@
+.foot {
+    @apply bg-blue-500 p-4;
+    @apply fixed bottom-0 w-full ;
+}
+.whole-div {
+    @apply container mx-auto text-center text-black static;
+}

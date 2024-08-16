@@ -1,0 +1,114 @@
+.big-div {
+    /* @apply flex flex-wrap justify-center py-4 ; */
+    @apply container mx-auto py-8;
+    
+}
+.small-div {
+    @apply bg-blue-300 shadow-md rounded mb-4 w-64 p-4 py-4;
+    /* @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4; */
+} 
+.h2 {
+    @apply text-lg;
+}
+.text {
+    @apply text-gray-600 text-sm font-serif;
+}
+.enroll-button {
+    @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded;
+  }
+  
+  .enroll-button.enrolled {
+    @apply bg-red-500 hover:bg-red-700;
+  }
+  .create {
+    @apply absolute top-0 right-0;
+  }
+  .updateForm {
+    @apply fixed top-0 left-0 w-full h-screen bg-gray-500 bg-opacity-50 flex justify-center items-center;
+  }
+  .div2 {
+    @apply bg-white p-4 rounded shadow-md h-1/2 items-center;
+  }
+  .upHeading {
+    @apply text-lg font-bold mb-4;
+  }
+  .HL {
+    @apply block mb-2 ;
+  }
+  .HI {
+    @apply  p-2 pl-10 text-sm text-gray-700 ;
+  }
+  .upSave {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm ;
+  }
+  .upCancel {
+    @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2 text-sm;
+  }
+  .update {
+    @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm;
+  }
+  .createc {
+    @apply flex justify-center mb-4;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+  .createc-btn {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  }
+  
+  .createc-course-text {
+    @apply text-2xl font-bold mb-4;
+  }
+  .c {
+    @apply flex space-x-2;
+  }
+  .dashboard-container {
+    @apply flex justify-around p-5;
+  }
+  .stat-box {
+    @apply w-52 h-36 bg-gray-200 flex flex-col items-center justify-center rounded-lg transition-transform duration-300 ease-in-out text-center shadow-md cursor-pointer hover:scale-110 hover:font-bold hover:bg-gray-300;
+  }
+  .dashH3 {
+    @apply m-0 text-lg;
+  }
+  .dashParagraph {
+    @apply text-xl mt-2;
+  }
+  .list-container {
+    @apply mt-8;
+  }
+  .listH3 {
+    @apply mb-4 text-xl;
+  }
+  .unordered {
+    @apply list-none p-0;
+  }
+  .index {
+    @apply py-2 text-lg;
+  }
+  .course-title {
+    @apply text-xl font-semibold text-gray-700;
+  }
+  
+  .course-code {
+    @apply text-gray-500 mt-2;
+  }
+  
+  .course-instructor {
+    @apply text-gray-600 mt-2;
+  }
+  .course-unordered {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6;
+  }
+  .course-heading {
+    @apply text-3xl font-bold text-gray-800 mb-6;
+  }
+  .myLearning-div {
+    @apply container mx-auto p-6;
+  }
+  .myLearning-text {
+    @apply text-gray-500;
+  }

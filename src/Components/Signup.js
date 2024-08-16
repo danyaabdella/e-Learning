@@ -19,15 +19,21 @@ const Signup = ({ setFormType }) => {
     });
 
     const data = await res.json();
-    if (res) {
-      alert(data.message); 
+    if (res.ok) {
+      alert(data.message);
+      window.location.href = '/dashboard';
+    } else {
+      alert(data.message);
     }
-    setFormType('signin');
+
+   
   };
 
   return (
-   // <div className="center">
+    <div>
+    {/* <div className="center"> */}
       <form onSubmit={handleSignup} className="form-container">
+        <h2>Signup</h2>
         <div>
           <label className="label">Email</label>
           <input
@@ -61,14 +67,10 @@ const Signup = ({ setFormType }) => {
         <button type="submit" className="submit-button">
           Sign Up
         </button>
-        <p className="link">
-          Already have an account?{' '}
-          <span className="spinner" onClick={() => setFormType('signin')}>
-            Sign In
-          </span>
-        </p>
+       
       </form>
-   // </div>
+   {/* </div> */}
+   </div>
   );
 };
 

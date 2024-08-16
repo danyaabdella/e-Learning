@@ -1,0 +1,122 @@
+/* sidebar.css */
+
+/* Sidebar Styles */
+.sidebar-toggle-button {
+    @apply absolute top-32 left-0 z-50 p-2 bg-black text-white rounded-md transition-all duration-300;
+  }
+  
+  .sidebar-container {
+    @apply absolute h-full top-28 bottom-0 left-0 bg-black text-white transition-all duration-300 overflow-hidden;
+  }
+  
+  .sidebar-expanded {
+    @apply w-32 h-full;
+  }
+  
+  .sidebar-collapsed {
+    @apply w-0;
+  }
+  
+  .sidebar-header {
+    @apply flex items-center justify-center p-4;
+  }
+  
+  .sidebar-nav {
+    @apply flex flex-col flex-1 p-4;
+  }
+  
+  .sidebar-link {
+    @apply block py-2 px-2 text-white hover:bg-gray-700 rounded-lg;
+  }
+  
+  /* Right Sidebar Styles */
+  /* .right-sidebar-container {
+    @apply absolute top-28 right-0 bottom-0 bg-white p-4 transition-all duration-300 shadow-lg;
+  }
+  
+  .right-sidebar-expanded {
+    @apply w-48;
+  }
+  
+  .right-sidebar-collapsed {
+    @apply w-0;
+  }
+  
+  .right-sidebar-toggle-button {
+    @apply absolute top-4 right-0 p-2 bg-blue-500 text-white rounded-full;
+  }
+  
+  .right-sidebar-content {
+    @apply flex flex-col space-y-4;
+  }
+  
+  .right-sidebar-message {
+    @apply bg-white p-4 rounded-lg shadow-md;
+  }
+  
+  .right-sidebar-message-title {
+    @apply text-lg font-semibold;
+  }
+  
+  .right-sidebar-message-text {
+    @apply text-gray-700;
+  }
+  
+  .right-sidebar-action-button {
+    @apply mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer;
+  }
+  
+  .right-sidebar-action-button-green {
+    @apply mt-2 inline-block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer;
+  }
+   */
+   /* sidebar.css */
+
+/* Right Sidebar Styles */
+/* sidebar.css */
+
+/* Right Sidebar Styles */
+.right-sidebar-container {
+  @apply absolute top-28 right-0 bottom-0 bg-white transition-all duration-300 shadow-lg overflow-hidden;
+  width: 0; /* Start with a collapsed width */
+}
+
+.right-sidebar-expanded {
+  @apply w-48; /* Width when expanded */
+}
+
+.right-sidebar-collapsed {
+  @apply w-0; /* Width when collapsed */
+}
+
+.right-sidebar-toggle-button {
+  @apply absolute top-4 p-2 bg-blue-500 text-white rounded-full transition-all duration-300;
+  right: -1rem; /* Adjusted for better visibility */
+  z-index: 10; /* Ensure the button is above other elements */
+}
+
+.right-sidebar-content {
+  @apply flex flex-col space-y-4;
+  display: none; /* Initially hide the content */
+}
+
+.right-sidebar-expanded .right-sidebar-content {
+  display: block; /* Show content when sidebar is expanded */
+}
+
+.right-sidebar-message {
+  @apply bg-white p-4 rounded-lg shadow-md;
+}
+
+.right-sidebar-message-title {
+  @apply text-lg font-semibold;
+}
+
+.right-sidebar-message-text {
+  @apply text-gray-700;
+}
+
+.right-sidebar-action-button {
+  @apply mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer;
+}
+

@@ -1,9 +1,15 @@
 /* src/styles/signin.css */
 .center {
-  @apply flex justify-center items-center min-h-screen bg-gray-100;
+  @apply flex justify-center items-center min-h-screen bg-gray-100 flex-grow;
+}
+.left {
+    @apply flex h-screen;
+  }
+.right {
+  @apply w-1/2 ;
 }
 .form-container {
-    @apply space-y-4;
+    @apply space-y-4 border-indigo-500/100;
   }
   
   .input-field {
