@@ -1,13 +1,7 @@
-import Admin from '../../Components/Admin';
-
-//import { useState } from 'react';
+import Admin from '../../Components/MyCourses';
 
 export default function AdminPage() {
- // const [formType, setFormType] = useState('signin');
   return (
-       <>
           <Admin />
-         
-       </>
   );
 }

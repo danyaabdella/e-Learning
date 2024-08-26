@@ -10,6 +10,8 @@ export default function ListPage() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [editingUserId, setEditingUserId] = useState(null); 
+  const [selectedRole, setSelectedRole] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,22 @@ export default function ListPage() {
     fetchData();
   }, []);
 
+  const changeRole = async (userId) => {
+    try {
+      // Send the selected role to the backend to update the user's role
+      await axios.put(`/api/users`, { id:userId, role: selectedRole });
+      setUsers(prevUsers => 
+        prevUsers.map(user => 
+          user._id === userId ? { ...user, role: selectedRole } : user
+        )
+      );
+      setEditingUserId(null); // Reset after updating
+    } catch (error) {
+      console.error('Error updating role:', error);
+      setError('Error updating role. Please try again later.');
+    }
+  };
+
   return (
     <>
       <SideBar/>
@@ -46,9 +64,9 @@ export default function ListPage() {
               <table className="T">
                 <thead>
                   <tr>
-                    <th className="table-header">Student email</th>
-                    <th className="table-header">Courses enrolled</th>
-                    
+                    <th className="table-header">Users email</th>
+                    <th className="table-header">role</th>
+                    <th className="table-header">change role</th>
                    
                   </tr>
                 </thead>
@@ -56,7 +74,35 @@ export default function ListPage() {
                   {users.map((user, index) => (
                     <tr key={index}>
                       <td className="table-cell">{user.email}</td>
-                      <td className="table-cell">{user.eldcourse}</td>
+                      <td className="table-cell">{user.role}</td>
+                      <td className="table-cell">
+                      {editingUserId === user._id ? (
+                          <div>
+                            <select 
+                              value={selectedRole} 
+                              onChange={(e) => setSelectedRole(e.target.value)}
+                            >
+                              <option value="">Select Role</option>
+                              <option value="admin">Admin</option>
+                              <option value="user">User</option>
+                              <option value="instructor">Instructor</option>
+                            </select>
+                            <button 
+                              className="roleBtn" 
+                              onClick={() => changeRole(user._id)}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        ) : (
+                          <button 
+                            className="roleBtn" 
+                            onClick={() => setEditingUserId(user._id)}
+                          >
+                            Change
+                          </button>
+                        )}
+                      </td>
                       
                     </tr>
                   ))}

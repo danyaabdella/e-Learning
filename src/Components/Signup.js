@@ -7,15 +7,23 @@ const Signup = ({ setFormType }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('user');
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+
+    const isInstructor = role === 'instructor' ? 1 : 0; // Map role to isInstructor
+
     const res = await fetch('/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, isInstructor,role}),
     });
 
     const data = await res.json();
@@ -64,6 +72,18 @@ const Signup = ({ setFormType }) => {
             required
           />
         </div>
+        <div>
+        <label className="label">Role</label>
+       <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="role-field"
+          required
+        >
+          <option value="user">User</option>
+          <option value="instructor">Instructor</option>
+        </select>
+      </div>
         <button type="submit" className="submit-button">
           Sign Up
         </button>

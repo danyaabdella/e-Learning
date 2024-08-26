@@ -80,9 +80,14 @@ const SideBar = () => {
               <Link href='course-list' className="sidebar-link">
                 Courses
               </Link>
+              <Link href="/partner" className="sidebar-link">
+                Partners
+              </Link>
+              <Link href="/testimonial" className="sidebar-link">
+                Testomonial
+              </Link>
               <Link href="#" className="sidebar-link">
                 Reports
-                
               </Link>
            
             </div>

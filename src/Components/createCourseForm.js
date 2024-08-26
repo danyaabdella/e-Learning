@@ -7,15 +7,24 @@ const CreateCourseForm = ({ onCreate, closeForm }) => {
   const [courseName, setCourseName] = useState('');
   const [courseCode, setCourseCode] = useState('');
   const [instructor, setInstructor] = useState('');
+  const [imageUrl,setImageUrl] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const userId = localStorage.getItem('userId');
+    const courseData = {
+      courseName,
+      courseCode,
+      instructor: userId,
+      image: imageUrl,
+      // Add other fields if needed
+    };
     await fetch('/api/courses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ courseName, courseCode, instructor }),
+      body: JSON.stringify(courseData),
     });
 
     onCreate(); // Call the onCreate callback to refresh courses in the parent component
@@ -47,7 +56,7 @@ const CreateCourseForm = ({ onCreate, closeForm }) => {
             className="HI"
           />
         </div>
-        <div>
+        {/* <div>
           <label className="HL">Instructor Name:</label>
           <input
             type="text"
@@ -56,7 +65,17 @@ const CreateCourseForm = ({ onCreate, closeForm }) => {
             required
             className="HI"
           />
-        </div>
+        </div> */}
+        <div>
+            <label className="HL">Course Image:</label>
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)} // Changed to setImageUrl
+              required
+              className="HI"
+            />
+          </div>
         <button className="upSave" type="submit">Create Course</button>
         <button className="upCancel" type="button" onClick={closeForm}>Cancel</button>
       </form>

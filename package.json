@@ -1,39 +1,43 @@
 {
   "name": "todo-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write ."
-  },
+  "version": "1.0.0",
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "postcss.config.js",
   "dependencies": {
-    "axios": "^1.7.2",
-    "bcryptjs": "^2.4.3",
-    "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.1",
-    "next": "14.2.5",
-    "next-auth": "^4.24.7",
-    "next-connect": "^1.0.0",
-    "nodemailer": "^6.9.14",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.3.0",
-    "react-router-dom": "^6.25.1",
-    "redis": "^4.7.0"
-  },
-  "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "postcss": "^8.4.40",
-    "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.7"
-  }
+    "axios": "^1.7.5",
+    "bcryptjs": "^2.4.3",
+    "busboy": "^1.6.0",
+    "client-only": "^0.0.1",
+    "graceful-fs": "^4.2.11",
+    "js-tokens": "^4.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "loose-envify": "^1.4.0",
+    "mongoose": "^8.5.4",
+    "next": "^14.2.6",
+    "nodemailer": "^6.9.14",
+    "picocolors": "^1.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "redis": "^4.7.0",
+    "streamsearch": "^1.1.0",
+    "tailwindcss": "^3.4.10",
+    "tslib": "^2.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElayeDegu/todo-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElayeDegu/todo-app/issues"
+  },
+  "homepage": "https://github.com/ElayeDegu/todo-app#readme"
 }

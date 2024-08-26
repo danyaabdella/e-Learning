@@ -5,8 +5,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   newPassword: { type: String },
-  role: { type: String, enum: ['user', 'admin'], default: 'user'},
-  eldCourses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
+  role: { type: String, enum: ['user', 'admin', 'instructor'], default: 'user'},
+  eldCourses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
+  isInstructor: {type: Boolean},
 });
 
 

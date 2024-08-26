@@ -1,44 +1,60 @@
 import bcrypt from 'bcryptjs';
 import User from '../../../models/User';
 import db from '../../../utils/db';
+import Profile from '../../../models/Profile';
+import sendEmail from '@/utils/sendEmail';
 
-
-
-export default async function handler (req, res) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      await db.connect();
+      await db.connect(); // Ensure the DB connection is established
 
+      const { email, password, isInstructor, role } = req.body;
 
-      const { email, password } = req.body;
-
+      // Check if the user already exists
       const existingUser = await User.findOne({ email });
-      
       if (existingUser) {
-        // await db.disconnect();
         return res.status(422).json({ message: 'User already exists!' });
       }
 
+      // Hash the password
       const hashedPassword = await bcrypt.hash(password, 12);
 
+      // Create the new user
       const newUser = new User({
         email,
         password: hashedPassword,
+        isInstructor,
+        role,
       });
 
+      // Save the user to the database
       await newUser.save();
 
-      res.status(201).json({ message: 'User created!' });
+      // Create a corresponding profile with the user's email
+      const newProfile = new Profile({
+        userId: newUser._id,
+        email: newUser.email,
+      });
+
+      // Save the profile to the database
+      await newProfile.save();
+      if (isInstructor) {
+        const adminEmail = 'abduibrahim5980@gmail.com'; // Replace with your admin's email
+        const subject = 'New Instructor Signup';
+        const text = `A new instructor has signed up with the email: ${email}.`;
+        const html = `<p>A new instructor has signed up with the email: <strong>${email}</strong>.</p>`;
+        await sendEmail(adminEmail, subject, text, html);
+      }
+      
+      // Respond with a success message
+      res.status(201).json({ message: 'User and Profile created successfully!' });
+
     } catch (error) {
       console.error('Signup error:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      res.status(500).json({ message: 'Internal server error', error: error.message });
     } 
-    // finally {
-    //   await db.disconnect();
-    // }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
-    console.log('not found');
   }
-};
-
+}

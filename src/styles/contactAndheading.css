@@ -1,0 +1,83 @@
+/* styles/tailwindStyles.css */
+
+.contact-container {
+    @apply min-h-screen bg-gray-50 py-8;
+}
+
+.contact-header {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.contact-heading {
+    @apply text-3xl font-extrabold text-gray-900;
+}
+
+.contact-description {
+    @apply mt-4 text-lg leading-6 text-gray-600;
+}
+
+.contact-info {
+    @apply text-lg text-gray-600;
+}
+
+.get-in-touch {
+    @apply text-2xl font-bold text-gray-800;
+}
+.contact-form {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+.input-field {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+}
+.label {
+    @apply block text-lg font-medium text-gray-700;
+}
+.contact-list {
+    @apply mt-4 space-y-4;
+}
+
+.submit-button {
+    @apply w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700;
+}
+
+.about-container {
+    @apply min-h-screen bg-gray-50 py-8;
+}
+
+.about-header {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.about-heading {
+    @apply text-3xl font-extrabold text-gray-900;
+}
+.text {
+    @apply text-center mb-12;
+}
+
+.about-description {
+    @apply mt-4 text-lg leading-6 text-gray-600;
+}
+
+.about-image-container {
+    @apply lg:flex lg:items-center lg:justify-between;
+}
+.about-image-container2 {
+    @apply lg:w-1/2;
+}
+
+.about-image {
+    @apply lg:w-1/2 w-full rounded-lg shadow-lg;
+}
+
+.about-content {
+    @apply lg:w-1/2 lg:pl-12;
+}
+
+.about-content-heading {
+    @apply text-2xl font-bold text-gray-800;
+}
+
+.about-content-paragraph {
+    @apply mt-4 text-lg text-gray-600 leading-relaxed;
+}

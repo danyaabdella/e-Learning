@@ -46,7 +46,14 @@ const CourseList = () => {
       ) : (
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course, index) => (
-            <li key={index} className="bg-white shadow-md rounded-lg p-4 border border-gray-200">
+            <li key={index} className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+              style={{ 
+                backgroundImage: course.image ? `url(${course.image})` : 'none',
+                backgroundSize: 'cover', 
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                height: '150px', // Ensure height is sufficient to show the image
+            }}>
               <h2 className="text-lg font-semibold">{course.courseName}</h2>
               {/* Render other course details */}
               <p>Description: {course.description}</p> {/* Example detail */}

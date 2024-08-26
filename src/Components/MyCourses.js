@@ -1,9 +1,9 @@
 // Dashboard.js
 'use client'
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import UpdateForm from './UpdateForm';
-import CreateCourseForm from './createCouurseForm';
+import CreateCourseForm from './createCourseForm';
 import '../styles/dash.css';
 
 const Admin = () => {
@@ -23,10 +23,21 @@ const Admin = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('/api/courses');
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No token found');
+
+      const userId = localStorage.getItem('userId'); // Get the logged-in user's ID
+      if (!userId) throw new Error('No user ID found');
+
+      // Fetch courses created by this user
+      const response = await axios.get('/api/courseById', {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { userId }, 
+      });
+
       setCourses(response.data);
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching courses:', error);
     }
   };
 
@@ -60,12 +71,24 @@ const Admin = () => {
       <div className="createc">
       <button className="createc-btn" onClick={handleCreateCourse}>Create new course</button>
     </div>
+    </div>
+    <div className="big-div">
         {courses.map((course) => (
-          <div key={course._id} className="small-div">
+          <div key={course._id} className="small-div"
+         >
+          <div
+           style={{ 
+            backgroundImage: course.image ? `url(${course.image})` : 'none',
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '150px', // Ensure height is sufficient to show the image
+        }}>
+        </div>
+          {/* {console.log(course.image)} */}
             <p className="text">Course name:{course.courseName}</p>
             <p className="text">Course code:{course.courseCode}</p>
-            <p className="text">Instructor name:{course.instructor}</p>
-            <p className="text">student List:{course.Std_Eld}</p>
+            
             <div className='c'>
             <button className="upCancel" onClick={(e) => removeCourse(e, course._id)}>Remove</button>
             <button className="update" onClick={() => updateCourse(course)}>Update</button>

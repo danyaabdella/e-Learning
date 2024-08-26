@@ -1,12 +1,17 @@
 .big-div {
-    /* @apply flex flex-wrap justify-center py-4 ; */
-    @apply container mx-auto py-8;
+    @apply flex flex-wrap justify-center p-4 ;
+    /* @apply container mx-auto py-8; */
     
 }
 .small-div {
-    @apply bg-blue-300 shadow-md rounded mb-4 w-64 p-4 py-4;
-    /* @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4; */
-} 
+    @apply bg-blue-300 shadow-md rounded mb-4 w-64  p-4 py-4 h-72;
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    /* height: 200px; /* Adjust height as necessary 
+    color: white; 
+     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4; */
+}
 .h2 {
     @apply text-lg;
 }
@@ -111,4 +116,24 @@
   }
   .myLearning-text {
     @apply text-gray-500;
+  }
+  .add-to-cart-container {
+    @apply flex justify-center p-2;
+  }
+  .add-to-cart-button {
+    @apply bg-gray-500 text-white w-24 rounded-full border-none py-2 px-4 cursor-pointer transition-colors duration-300 hover:bg-gray-600;
+  }
+  
+  /* .add-to-cart-button:hover {
+    background-color: darkgray; 
+  }  */
+  .wishlist-icon {
+    @apply absolute text-xl  cursor-pointer border-black ;
+    /* z-index: 10px; */
+  }
+  .wishlist-icon-true {
+    @apply text-yellow-500;
+  }
+  .wishlist-icon-false {
+    @apply text-white;
   }

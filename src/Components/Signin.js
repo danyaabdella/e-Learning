@@ -8,6 +8,7 @@ import Link from 'next/link';
 const Signin = ({ setFormType }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('user'); // Default to 'user'
   
   
 
@@ -28,6 +29,10 @@ const Signin = ({ setFormType }) => {
       //alert('Signin successful!');
       const token = data.token;
       localStorage.setItem('token', token);
+      const userId = data.userID;
+      localStorage.setItem('userId', userId);
+      const email = data.Email;
+      localStorage.setItem('Email', email);
       window.location.href = '/';
       // or use the Link component: <Link href='../dashboard'></Link>
     }
@@ -53,10 +58,11 @@ const Signin = ({ setFormType }) => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            className="input-field"
             required
           />
         </div>
+        
         <button type="submit" className="submit-button">
           Sign In
         </button>

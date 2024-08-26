@@ -31,4 +31,6 @@
   .spinner {
     @apply text-blue-500 cursor-pointer;
   }
-  
+  .role-field {
+    @apply mt-1 p-2 w-full border border-gray-300 rounded-md;
+  }
