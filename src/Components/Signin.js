@@ -34,7 +34,7 @@ const Signin = ({ setFormType }) => {
       const Email = data.Email;
       localStorage.setItem('Email', Email);
       window.location.href = '/';
-      // or use the Link component: <Link href='../dashboard'></Link>
+      
     }
   };
 
