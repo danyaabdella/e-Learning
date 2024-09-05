@@ -1,18 +1,20 @@
-// src/pages/auth/signup.js
-//'use client'
-// import Signup from '../../Components/Signup';
 
-// export default function SignupPage() {
-//   return <Signup setFormType={setFormType}/>;
-// }
 import Signup from '../../Components/Signup';
-import { useState } from 'react';
+import Signin from '../../Components/Signin';
+import '../../styles/auth.css';
 
-//const Signup = dynamic(() => import('@/Components/Signup'), { ssr: false });
 
  const SignupPage = () => {
-  const [formType, setFormType] = useState('signup');
 
-  return <Signup setFormType={setFormType} />;
+  return (
+      <div className="left">
+      <div className="right">
+        <Signin setFormType={'signin'}/>
+      </div>
+      <div className="right">
+        <Signup setFormType={'signup'}/>
+      </div>
+    </div>
+  );
 }
 export default SignupPage;

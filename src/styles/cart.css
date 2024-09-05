@@ -1,0 +1,40 @@
+/* CartPage.module.css */
+
+.cartPage {
+    @apply flex flex-col items-center p-6 bg-gray-100 min-h-screen;
+  }
+  
+  .cartTitle {
+    @apply text-2xl font-bold mb-4 text-gray-800;
+  }
+  
+  .emptyCartMessage {
+    @apply text-lg text-gray-600;
+  }
+  
+  .cartItemsList {
+    @apply list-none p-0 m-0;
+  }
+  
+  .cartItem {
+    @apply flex justify-between items-center p-4 bg-white shadow-md rounded-md mb-4;
+  }
+  
+  .removeButton {
+    @apply text-red-500 hover:text-red-700 font-bold;
+  }
+  
+  .paymentForm {
+    @apply mt-8 w-full max-w-sm;
+  }
+  
+  .paymentInput {
+    @apply w-full p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:border-blue-500;
+  }
+  .paymentLabel {
+    @apply block text-sm font-medium text-gray-700;
+  }
+  .paymentButton {
+    @apply w-full py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600;
+  }
+  

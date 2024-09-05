@@ -1,13 +1,14 @@
 // components/Signin.js
-//'use client'
+'use client'
 import { useState } from 'react';
-import MM from '@/app/MM/page';
 import '../styles/auth.css'; 
 import Link from 'next/link';
+
 
 const Signin = ({ setFormType }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('user'); // Default to 'user'
   
   
 
@@ -20,18 +21,27 @@ const Signin = ({ setFormType }) => {
       },
       body: JSON.stringify({ email, password }),
     });
-
-    if (res.ok) {
-      alert('Signin successful!');
-      <MM />
-   // <Link href='../dashboard'></Link>
-    } 
+  
+    const data = await res.json();
     
+  
+    if (res.ok) {
+      //alert('Signin successful!');
+      const token = data.token;
+      localStorage.setItem('token', token);
+      const userId = data.userID;
+      localStorage.setItem('userId', userId);
+      const Email = data.Email;
+      localStorage.setItem('Email', Email);
+      window.location.href = '/';
+      // or use the Link component: <Link href='../dashboard'></Link>
+    }
   };
 
   return (
-    // <div className= "center">
+    // <div className= "left">
       <form onSubmit={handleSignin} className="form-container">
+         <h2>Signin</h2>
         <div>
           <label className="label">Email</label>
           <input
@@ -48,32 +58,34 @@ const Signin = ({ setFormType }) => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            className="input-field"
             required
           />
         </div>
+        
         <button type="submit" className="submit-button">
           Sign In
         </button>
-        <p className="link">
+        {/* <p className="link">
           Don't have an account?{' '}
-          <span className="spinner" onClick={() => setFormType('signup')}>
+          <Link className="spinner" href='/signup'>
             Sign Up
-          </span>
-        </p>
+          </Link>
+        </p> */}
         <p className="link">
-          <span className="spinner" onClick = {()=> setFormType('requestOtp')}>
+          <Link className="spinner" href = '/forgetpassword'>
             Forgot Password?
-          </span>
-        </p>
-        <p className="link">
+          </Link>
           <Link className="spinner" href ='/resetPassword'>
             Reset Password?
           </Link>
         </p>
+        <p className="link">
+         
+        </p>
 
       </form>
-   // </div>
+  //  </div>
   );
 };
 

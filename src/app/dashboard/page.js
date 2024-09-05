@@ -1,7 +1,15 @@
 import Dashboard from '../../Components/Dashboard';
-//import { useState } from 'react';
+import SideBar from '@/Components/SideBar';
+
+
 
 export default function DashboardPg() {
- // const [formType, setFormType] = useState('signin');
-  return <Dashboard />;
+
+  return (
+    <>
+    <SideBar />
+    <Dashboard />;
+    
+    </>
+  );
 }

@@ -1,0 +1,13 @@
+
+.error {
+    @apply text-red-500;
+}
+.approve-container {
+    @apply p-8;
+}
+.approve-container h1 {
+    @apply text-2xl font-bold mb-4;
+}
+.approve-container button {
+    @apply mt-4 bg-blue-500 text-white py-2 px-4 rounded;
+}

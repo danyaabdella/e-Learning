@@ -1,8 +1,9 @@
-// pages/auth/forgetpassword.js
+
+'use client';
 import { useState } from 'react';
-import ForgetPassword from '@/components/ForgetPassword';
-import VerifyOtp from '@/components/VerifyOtp';
-import SetNewPassword from '@/components/SetNewPassword';
+import RequestOtp from '@/Components/RequestOtp';
+import VerifyOtp from '@/Components/VerifyOtp';
+import SetNewPassword from '@/Components/SetNewPassword';
 
 const ForgetPasswordPage = () => {
   const [formType, setFormType] = useState('requestOtp');
@@ -19,8 +20,8 @@ const ForgetPasswordPage = () => {
 
   return (
     <div>
-      {formType === 'requestOtp' && <ForgetPassword onOtpRequested={handleOtpRequested} />}
-      {formType === 'verifyOtp' && <VerifyOtp setFormType={setFormType} email={email} />}
+      {formType === 'requestOtp' && <RequestOtp onOtpRequested={handleOtpRequested} />}
+      {formType === 'verifyOtp' && <VerifyOtp onOtpVerified={handleOtpVerified} email={email} />}
       {formType === 'setNewPassword' && <SetNewPassword email={email} />}
     </div>
   );

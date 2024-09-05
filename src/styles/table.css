@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom classes */
+.heading {
+    @apply text-2xl font-bold mb-4;
+}
+.header {
+    @apply p-4 bg-gray-100 min-h-screen flex flex-col items-center ;
+}
+.content-container {
+    @apply w-full max-w-4xl mx-auto; /* Center content and limit width */
+}
+.T {
+    @apply min-w-full bg-white border border-gray-200;
+}
+.header2 {
+    @apply overflow-x-auto;
+}
+.table-header {
+  @apply px-4 py-2 bg-gray-100 text-left font-semibold;
+}
+.table-cell {
+  @apply px-4 py-2 border-t border-gray-200;
+}
+.loading-text {
+  @apply text-blue-500 text-lg;
+}
+.error-text {
+  @apply text-red-500 text-lg;
+}
+
+/* New Custom classes for side-by-side tables */
+.tables-container {
+  @apply flex space-x-8; /* Use flexbox to align side by side and add space between them */
+}
+
+.table-section {
+  @apply flex-1; /* Make each table section flexible to take equal space */
+}
+.roleBtn {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}

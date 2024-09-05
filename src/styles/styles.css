@@ -1,0 +1,114 @@
+/* styles/styles.css */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px;
+    /* @apply flex flex-col items-center justify-center h-screen px-8;  */
+  }
+  
+  .left,
+  .right {
+    /* flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    @apply flex-1 items-center justify-center;
+  }
+  
+  .right {
+    /* text-align: center; */
+    @apply text-center mt-4;
+  }
+  /* styles/homePageStyles.css */
+.course-heading {
+  /* @apply text-center text-4xl font-bold text-blue-600 my-10; */
+  @apply text-center text-4xl font-bold text-blue-600 mt-8 mb-4;
+}
+.course-list {
+  @apply grid grid-rows-1 md:grid-rows-3 gap-8 mx-auto max-w-2xl;
+}
+
+.course-item {
+  @apply bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 mx-auto w-11/12 ;
+}
+
+.course-title {
+  @apply text-2xl font-semibold text-gray-800 mb-4;
+}
+
+.course-description {
+  @apply text-lg text-gray-600 mb-2;
+}
+
+.course-button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300;
+}
+
+.partner-heading {
+  /* @apply text-2xl font-bold text-blue-500 my-8; */
+  @apply text-center text-2xl font-bold text-blue-500 mt-4 mb-4;
+}
+
+.partner-slider {
+  /* @apply mt-4; */
+  @apply relative w-full overflow-hidden ;
+}
+
+.partner-item {
+  /* @apply p-4 bg-white rounded-lg shadow-md text-center; */
+  @apply p-4 bg-white rounded-lg shadow-md text-center max-w-sm mx-auto;
+}
+.partner-img {
+  @apply rounded-lg shadow-lg mx-auto;
+}
+.partner-name {
+  @apply text-lg font-bold mt-4;
+}
+.partner-description {
+  @apply text-sm ;
+}
+.slider-container {
+  /* @apply flex w-full transition-transform duration-500 ease-linear; */
+  @apply flex w-full justify-center items-center transition-transform duration-500 ease-linear;
+}
+.slider-item {
+  @apply min-w-full flex-none hidden; /* Flex properties are covered by flex utilities */
+}
+.slider-item.active {
+  @apply block mx-auto; /* Show only the active slide */
+}
+.custom-button {
+  @apply absolute top-1/2 transform -translate-y-1/2 bg-white border-none p-2 cursor-pointer z-10 shadow rounded-full;
+
+}
+.custom-button-prev {
+  @apply left-2;
+
+}
+.custom-button-next {
+  @apply right-2;
+}
+.custom-button:hover {
+  @apply bg-gray-200;
+}
+.testimonial-heading {
+  @apply text-center text-2xl font-semibold mt-10;
+}
+.testimonial-list {
+  @apply flex justify-center mt-6;
+}
+.testimonial-item {
+  @apply p-4 m-2 w-1/4 bg-blue-950 rounded-lg shadow-lg transform hover:scale-110 transition-transform duration-500;
+}
+.testimonial-img {
+  /* @apply w-full h-48 object-cover rounded-t; */
+  @apply  w-16 h-16 mb-4 rounded-full;
+}
+.testimonial-name {
+  @apply mt-4 text-gray-900 font-bold;
+}
+.testimonial-message {
+  @apply text-sm text-white italic;
+}

@@ -1,13 +1,16 @@
 import mongoose from 'mongoose';
+import Course from './Course'; 
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  newPassword: {type: String},
-  Otp: String,
-  OtpExpiry: Date
+  newPassword: { type: String },
+  role: { type: String, enum: ['user', 'admin', 'instructor'], default: 'user'},
+  eldCourses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
+  isInstructor: {type: Boolean},
+  isapproved: {type:Boolean, default:false},
 });
 
 
-const User = mongoose.model.User || mongoose.model('User', userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 export default User;
