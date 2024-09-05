@@ -7,8 +7,12 @@ const ProfileSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+<<<<<<< HEAD
   firstName: { type: String },
   lastName: { type: String},
+=======
+  username: { type: String },
+>>>>>>> upstream/Dan
   gender: { type: String, enum: ['Male', 'Female', 'Other'] },
   email: { type: String, required: true, unique: true },
   bio: { type: String },

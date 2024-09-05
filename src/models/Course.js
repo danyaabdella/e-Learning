@@ -4,7 +4,10 @@ import User from './User';
 const courseSchema = new mongoose.Schema({
   courseName: { type: String, required: true, unique: true },
   courseCode: { type: String, required: true },
+<<<<<<< HEAD
   coursePrice: {type: String},
+=======
+>>>>>>> upstream/Dan
   instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   Std_Eld: [{ type:mongoose.Schema.Types.ObjectId, ref: 'User'}],
   image: { type: String},

@@ -1,4 +1,3 @@
-
 'use client'; // This directive ensures the component runs on the client-side
 
 import Link from 'next/link';
