@@ -50,7 +50,10 @@ const AccountSettings = () => {
             <button onClick={() => setActiveModal('deleteProfile')} className="option-button-red">Delete Profile</button>
           </>
         )}
+
         {(role === 'admin' || role === 'instructor' || role === 'user') && (
+
+        
           <>
             <button onClick={() => setActiveModal('updateProfile')} className="option-button-yellow">Update Profile</button>
             <button onClick={() => setActiveModal('profile')} className="option-button-green">View Profile</button>
