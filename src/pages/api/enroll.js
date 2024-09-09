@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
         const newEnrollment = new Enrollment({
           userId, // Wrap userId in an array
-          courseId: courseIds, // Already an array
+          courseId: courseId, // Already an array
           order_number,
           price,
           paymentId,
@@ -28,7 +28,19 @@ export default async function handler(req, res) {
         res.status(500).json({ status: 'error', message: 'Error saving enrollment' });
       }
       
-    } else {
+    } else if(method=='GET') {
+      try {
+        const { userId } = req.query;
+  
+        // Fetch the enrollment details for the user and populate course information
+        const enrollments = await Enrollment.find({ userId }).populate('courseId').exec();
+  
+        res.status(200).json({ status: 'success', data: enrollments });
+      } catch (error) {
+        console.error('Error fetching enrollments:', error);
+        res.status(500).json({ status: 'error', message: 'Error fetching enrollments' });
+      }
+    }else {
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
       

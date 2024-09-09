@@ -8,10 +8,7 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['user', 'admin', 'instructor'], default: 'user'},
   eldCourses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
   isInstructor: {type: Boolean},
-<<<<<<< HEAD
   isapproved: {type:Boolean, default:false},
-=======
->>>>>>> upstream/Dan
 });
 
 

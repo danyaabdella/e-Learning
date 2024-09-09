@@ -8,12 +8,14 @@
 }
 .header {
     @apply p-4 bg-gray-100 min-h-screen flex flex-col items-center ;
+    
 }
 .content-container {
     @apply w-full max-w-4xl mx-auto; /* Center content and limit width */
 }
 .T {
     @apply min-w-full bg-white border border-gray-200;
+   
 }
 .header2 {
     @apply overflow-x-auto;
@@ -33,7 +35,8 @@
 
 /* New Custom classes for side-by-side tables */
 .tables-container {
-  @apply flex space-x-8; /* Use flexbox to align side by side and add space between them */
+  /* @apply flex space-x-8 min-h-screen; Use flexbox to align side by side and add space between them */
+  @apply flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 ;
 }
 
 .table-section {
@@ -41,4 +44,7 @@
 }
 .roleBtn {
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+.m {
+  @apply w-1/2;
 }

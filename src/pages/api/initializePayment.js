@@ -20,8 +20,8 @@ export default async function handler(req, res) {
           "first_name": first_name,
           "last_name": last_name,
           "tx_ref": txRef,
-          "callback_url": "https://73b1-196-188-81-70.ngrok-free.app/api/webhook",  
-          "return_url": "http://localhost:3000/thankYou",  
+          "callback_url": "https://9ec1-196-188-81-70.ngrok-free.app/api/webhook",  
+          "return_url": "http://localhost:3000/mylearning",  
           "customization[title]": "Payment for Courses",
           "customization[description]": "E-learning Course Payment",
           "meta[hide_receipt]": "true"

@@ -86,8 +86,8 @@ const SideBar = () => {
               <Link href="/testimonial" className="sidebar-link">
                 Testomonial
               </Link>
-              <Link href="#" className="sidebar-link">
-                Reports
+              <Link href="/aboutcontent" className="sidebar-link">
+                ِAbout
               </Link>
            
             </div>

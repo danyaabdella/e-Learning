@@ -1,7 +1,31 @@
+'use client'
 import '../../styles/contactAndheading.css';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function AboutPage() {
+
+    const [imageUrl, setImageUrl] = useState('');
+    const [content, setContent] = useState([]);
+
+    useEffect(() => {
+        const fetchAbout = async () => {
+            try {
+            const response = await axios.get('/api/aboutcontent'); // Adjust the API endpoint as needed
+            const data = response.data;
+    
+            setImageUrl(data.img || '');
+            setContent(data.content || []);
+            } catch (error) {
+            console.error('Error fetching data', error);
+            }
+        };
+    
+        fetchAbout();
+    }, []);
+
+    
     return (
         <div className="about-container">
             <div className="about-header">
@@ -14,16 +38,19 @@ export default function AboutPage() {
 
                 <div className="about-image-container">
                     <div className="about-image-container2">
-                        <Image src="/about.png" alt="E-Learning" className="about-image" width={600} height={400}/>
+                        <Image src={imageUrl} alt="E-Learning" className="about-image" width={600} height={400}/>
                     </div>
                     <div className="about-content">
-                        <h3 className="about-content-heading">What is E-Learning?</h3>
-                        <p className="about-content-paragraph">
-                            E-Learning is an integrated set of interactive online services that provides trainers, learners, and others involved in education with information, tools, and resources to support and enhance education delivery and management. One type of e-learning software is a learning management system (LMS).
-                        </p>
-                        <p className="about-content-paragraph">
-                            Our platform offers a wide range of courses and learning materials designed to help you enhance your skills and knowledge at your own pace, anytime and anywhere.
-                        </p>
+                        {content.map((item, index) => (
+                        <div key={index} className="about-content-section">
+                            {item.title && (
+                            <h3 className="about-content-heading">{item.title}</h3>
+                            )}
+                            {item.description && (
+                            <p className="about-content-paragraph">{item.description}</p>
+                            )}
+                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

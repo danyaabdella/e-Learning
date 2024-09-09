@@ -27,7 +27,7 @@ const Admin = () => {
       const userId = localStorage.getItem('userId');
       if (!userId) throw new Error('No userId found');
 
-      const response = await axios.get('/api/checkApproval', {
+      const response = await axios.get('/api/users', {
         // headers: { Authorization: `Bearer ${token}` },
         params: { userId }, 
       });
@@ -92,7 +92,7 @@ const Admin = () => {
     return (
       <div className="not-approved">
         <h1 className="not-approved h1">You are not approved yet</h1>
-        <p className="not-approved p">Please wait for admin approval to access the courses.</p>
+        <p className="not-approved p">Please wait for admin approval to create courses.</p>
       </div>
     );
   }

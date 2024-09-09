@@ -1,0 +1,6 @@
+.div-container {
+    @apply fixed bottom-4 animate-pulse right-4;
+}
+.btn {
+    @apply bg-orange-600 text-white rounded-full w-12 h-12 flex items-center justify-center focus:outline-none;
+}

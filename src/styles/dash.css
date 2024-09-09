@@ -29,10 +29,14 @@
     @apply absolute top-0 right-0;
   }
   .updateForm {
-    @apply fixed top-0 left-0 w-full h-screen bg-gray-500 bg-opacity-50 flex justify-center items-center;
+    /* @apply fixed top-0 left-0 w-full h-screen bg-gray-500 bg-opacity-50 flex justify-center items-center; */
+    
+      @apply fixed top-0 left-0 w-full h-screen bg-gray-500 bg-opacity-50 flex justify-center items-center backdrop-blur-sm;
+    
   }
   .div2 {
-    @apply bg-white p-4 rounded shadow-md h-1/2 items-center;
+    /* @apply bg-white p-4 rounded shadow-md h-2/3 items-center; */
+    @apply bg-white p-4 rounded shadow-md max-w-lg w-full;
   }
   .upHeading {
     @apply text-lg font-bold mb-4;
@@ -111,12 +115,7 @@
   .course-heading {
     @apply text-3xl font-bold text-gray-800 mb-6;
   }
-  .myLearning-div {
-    @apply container mx-auto p-6;
-  }
-  .myLearning-text {
-    @apply text-gray-500;
-  }
+  
   .add-to-cart-container {
     @apply flex justify-center p-2;
   }
