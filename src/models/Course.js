@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import User from './User';
 
 const courseSchema = new mongoose.Schema({
+  courseCategory:{type: String},
   courseName: { type: String, required: true, unique: true },
   courseCode: { type: String, required: true },
   coursePrice: {type: String},
@@ -12,6 +13,8 @@ const courseSchema = new mongoose.Schema({
   isapproved: { type: Boolean},
   requirement:{ type: String},
   Overview: { type: String},
+  video: [{ type: String }], // URL or path for uploaded video file
+  file: { type: String }, //URL for document
 
 
 });

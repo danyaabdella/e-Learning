@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 // // components/RequestOtp.js
 // import { useState } from 'react';
 // import axios from 'axios';
@@ -55,7 +53,7 @@
 // };
 
 // export default RequestOtp;
->>>>>>> upstream/Dan
+
 import { useState } from 'react';
 
 const RequestOtp = ({ onOtpRequested }) => {

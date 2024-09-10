@@ -1,0 +1,47 @@
+/* styles/aboutcontent.css */
+
+.container {
+    @apply p-6 max-w-2xl mx-auto bg-white rounded-lg shadow-lg;
+  }
+  
+  .header {
+    @apply text-2xl font-bold mb-4;
+  }
+  
+  .inputField {
+    @apply w-full p-2 border border-gray-300 rounded;
+  }
+  .inputFieldMr {
+    @apply w-full p-2 border border-gray-300 rounded mr-2;
+  }
+  
+  .buttonAdd {
+    @apply bg-blue-500 text-white p-2 rounded;
+  }
+  
+  .buttonRemove {
+    @apply bg-red-500 text-white p-2 rounded ml-2;
+  }
+  
+  .buttonUpdate {
+    @apply bg-green-500 text-white p-2 rounded;
+  }
+  
+  .textarea {
+    @apply w-full p-2 mt-2 border border-gray-300 rounded;
+  }
+  
+  .flexContainer {
+    @apply flex items-center;
+  }
+  
+  .mb {
+    @apply mb-4;
+  }
+  
+  .ml {
+    @apply ml-2;
+  }
+  .img-url {
+    @apply block text-sm font-medium mb-1;
+  }

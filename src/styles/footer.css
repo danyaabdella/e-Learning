@@ -5,3 +5,27 @@
 .whole-div {
     @apply container mx-auto text-center text-black static pt-4;
 }
+.footer_container {
+    @apply pt-20 pb-12 mt-8 bg-black;
+}
+.footer_small_container {
+    @apply w-[80%] mx-auto grid items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-8 border-b-[1.5px] border-white border-opacity-20;
+}
+.footer_heading{
+    @apply text-lg text-white font-bold mb-4;
+}
+.footer_link {
+    @apply text-sm text-white hover:text-green-700 cursor-pointer text-opacity-60 mb-3 w-fit;
+}
+.paragraph {
+    @apply text-white text-opacity-50;
+}
+.emailInput-field {
+    @apply px-6 py-2 rounded-lg outline-none bg-gray-700 w-full text-white;
+}
+.subscribeBtn {
+    @apply px-6 py-2 mt-4 rounded-lg outline-none bg-rose-700 w-full text-white;
+}
+.copyright {
+    @apply text-center mt-4 text-base text-white opacity-70;
+}

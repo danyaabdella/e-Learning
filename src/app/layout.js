@@ -28,6 +28,7 @@ import "../styles/globals.css";
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import { CartProvider } from '../Components/CartContext';
+import ScrollTop from "@/Components/ScrollTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <ScrollTop/>
       </body>
     </html>
   );

@@ -158,9 +158,9 @@ export default function CartPage() {
                   item.courseId[0].courseName : 
                   'Course Name Not Available'
                 }
-                <button onClick={() => handleRemoveFromCart(item.courseId[0]._id)} 
+                <button onClick={() => handleRemoveFromCart(item.courseId._id)} 
                     className='removeButton'>Remove</button><br/>
-                {item.courseId[0].coursePrice}
+                {/* {item.courseId[0].coursePrice} */}
               </li>
             ))}
           </ul>

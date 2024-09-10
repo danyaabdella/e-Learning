@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios'; 
+import { FaStar } from 'react-icons/fa';
+import { BsQuote} from 'react-icons/bs';
+ import Slider from '@/Components/Slider';
 import '../styles/styles.css'; // Assuming styles are in styles.css
 
 
@@ -61,14 +64,14 @@ const Page = () => {
     }
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? partners.length - 1 : prev - 1));
-  };
+  // const prevSlide = () => {
+  //   setCurrentSlide((prev) => (prev === 0 ? partners.length - 1 : prev - 1));
+  // };
 
   // Function to handle next slide
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === partners.length - 1 ? 0 : prev + 1));
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide((prev) => (prev === partners.length - 1 ? 0 : prev + 1));
+  // };
 
   return (
     <>
@@ -85,32 +88,56 @@ const Page = () => {
       </p>
     </div>
 </div>
-
-<h2 className="course-heading">Some of the courses available</h2>
+<div className="course-div">
+<h1 className="course-heading">Some of the courses available</h1>
 <div className="course-list">
   {courses.map((course) => (
     <div onClick={handleCourseClick} key={course.id} className="course-item">
       <div
-        style={{
-          backgroundImage: course.image ? `url(${course.image})` : 'none',
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          height: '150px', // Ensure height is sufficient to show the image
-        }}
-      ></div>
-      <h3 className="course-title">{course.courseName}</h3>
+        // style={{
+        //   backgroundImage: course.image ? `url(${course.image})` : 'none',
+        //   backgroundSize: 'cover', 
+        //   backgroundPosition: 'center',
+        //   backgroundRepeat: 'no-repeat',
+        //   height: '150px', // Ensure height is sufficient to show the image
+        // }}
+      >
+        <Image src={course.image}
+              alt={course.courseName}
+              width={400}
+              height={400}
+              className='image'/>
+      </div>
+      <div className='price-div'>
+        <h1 className="coursePrice">
+            {course.coursePrice}
+        </h1>
+        <div className="course-info"></div>
+      <span className='course-title'>{course.courseCategory}</span>
+      <span className='course-description'>{course.instructor}</span>
+      </div>
+      <h1 className = "courseName">{course.courseName}</h1>
+      <div className='div-div-star'>
+        <div className='div-star'>
+          <FaStar className="star"/>
+          <FaStar className="star"/>
+          <FaStar className="star"/>
+          <FaStar className="star"/>
+          <FaStar className="star"/>
+        </div>
+      </div>
+      {/* <h3 className="course-title">{course.courseName}</h3>
       <p className="text-description">{course.courseCode}</p>
-      <p className="text-description">Instructor: {course.instructor}</p>
+      <p className="text-description">Instructor: {course.instructor}</p> */}
     </div>
   ))}
 </div>
-
+</div>
 {/* Partners Carousel */}
-<h2 className="course-heading">Our Partners</h2>
+{/* <h2 className="course-heading">Our Partners</h2>
 <div className="partner-slider">
   
-  {/* Slider Container */}
+   Slider Container 
   <div className='container'>
   <button onClick={prevSlide} className="custom-button custom-button-prev">←</button>
   <button onClick={nextSlide} className="custom-button custom-button-next">→</button>
@@ -121,12 +148,31 @@ const Page = () => {
         key={partner.id}
         className={`slider-item ${index === currentSlide ? 'active' : ''}`}
       >
-        <img src={partner.img} alt={partner.fullName} className="partner-img mx-auto" /> {/* Center image */}
+        <img src={partner.img} alt={partner.fullName} className="partner-img mx-auto" />  Center image 
         <h3 className="partner-name">{partner.fullName}</h3>
         <p className="partner-description">{partner.description}</p>
       </div>
     ))}
   </div>
+  </div>
+</div> */}
+<div className='partner-heading'>
+  <div className='partner-section'>
+      { /*text-field */}
+      <div className='partner-slider'>
+        <div className='partner-item '>
+          <div className='partner-quote'>
+            <BsQuote className="quote"/>
+          </div>
+          <h1 className='partner-text'>
+            Our partners
+          </h1>
+        </div>
+      </div>
+      
+      <div className=' partner-slide'>
+         <Slider/> 
+      </div>
   </div>
 </div>
     {/* Testimonial components */}
