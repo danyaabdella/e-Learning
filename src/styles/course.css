@@ -1,0 +1,109 @@
+/* Container for the course page */
+.course-container {
+  @apply container mx-auto p-6 mt-4 bg-blue-50 text-center min-h-screen flex flex-col items-center justify-center relative border-4 border-double border-pink-950;
+}
+
+/* Circular section with smooth transition */
+.course-circular-section {
+  @apply relative flex justify-center items-center bg-blue-100 rounded-full h-80 w-80 my-8 transition-all duration-700 ease-in-out;
+}
+
+/* Minimized state for circular section */
+.course-circular-section.minimized {
+  @apply absolute top-4 left-4 h-20 w-20;
+}
+
+/* Image container */
+.course-image {
+  @apply w-full h-full flex justify-center items-center transition-all duration-700 ease-in-out; /* Smooth transition */
+}
+
+/* Image styling (make it cover the circular area) */
+.course-image img {
+  @apply w-full h-full object-cover rounded-full;
+}
+
+/* Input and form styling for Overview and Requirements */
+.course-form {
+  @apply flex flex-col items-center mt-8;
+}
+
+.course-label {
+  @apply mb-2 text-lg text-blue-600 font-semibold;
+}
+
+.course-input {
+  @apply w-64 p-2 border border-blue-400 rounded-lg mb-4;
+}
+.course-name {
+  @apply text-center text-4xl font-bold text-rose-600 mt-4;
+}
+
+.course-update-btn {
+  @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500;
+}
+
+/* Icon grid layout */
+.course-icon-grid {
+  @apply flex justify-center mt-8 gap-8;
+}
+
+.course-icon {
+  @apply flex flex-col items-center cursor-pointer;
+}
+
+.course-icon i {
+  @apply text-2xl text-blue-600;
+}
+
+.course-icon p {
+  @apply mt-2 text-blue-600;
+}
+.course-submit-btn {
+  @apply mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors
+}
+.chapter-card-container {
+  @apply flex flex-wrap gap-8 justify-center;
+}
+/* Container for individual chapter cards */
+.chapter-card {
+  @apply bg-white shadow-lg rounded-lg p-4 w-80 mb-4 relative flex flex-col items-center justify-center transition-all duration-300 ease-in-out;
+}
+
+/* Title for each chapter */
+.chapter-title {
+  @apply text-xl font-bold text-blue-600 mb-2;
+}
+
+/* Form input for chapter video and document */
+.chapter-section {
+  @apply flex flex-col items-center justify-center mt-4 w-full;
+}
+
+.chapter-input {
+  @apply w-full p-2 border border-blue-400 rounded-lg mb-4;
+}
+
+/* Button to add new chapters */
+.chapter-add-btn {
+  @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 mb-4;
+}
+
+/* Button to remove a chapter */
+.chapter-remove-btn {
+  @apply px-2 py-1 bg-red-600 text-white rounded-full absolute top-2 right-2 hover:bg-red-500;
+}
+.flex {
+  @apply flex-grow;
+}
+.flexbox {
+  @apply flex justify-end;
+}
+.chapter-move-btn-right {
+  @apply px-1 py-0 bg-blue-600 text-white rounded-full absolute bottom-52 right-[-4px] hover:bg-blue-500;
+
+}
+.chapter-move-btn-left {
+  @apply px-1 py-0 bg-blue-600 text-white rounded-full absolute bottom-52 left-[-4px] hover:bg-blue-500;
+
+}

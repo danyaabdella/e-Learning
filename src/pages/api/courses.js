@@ -14,7 +14,7 @@ export default async (req, res) => {
     case 'GET':
       
       try {
-        const courses = await Course.find({});
+        const courses = await Course.find({})
         res.status(200).json(courses);
       } catch (error) {
         console.error('Error fetching courses:', error);

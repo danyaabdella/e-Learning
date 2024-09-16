@@ -10,6 +10,10 @@ const enrolmentSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  email: {
+    type:String,
+    required:true
+  },
   courseId: [{
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Course',

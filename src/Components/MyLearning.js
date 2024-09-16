@@ -24,9 +24,9 @@ const MyLearning = () => {
 
         // const userData = await userResponse.json();
         // const userId = userData._id;
-        const userId = localStorage.getItem('userId');
+        const email = localStorage.getItem('Email');
 
-        const response = await fetch(`/api/enroll?userId=${userId}`, {
+        const response = await fetch(`/api/enroll?email=${email}`, {
           method:'GET',
         });
         if (!response.ok) {
@@ -62,8 +62,8 @@ const MyLearning = () => {
           {courses.map(enrollment => (
             <li key={enrollment._id} className="course-card">
               <div className="course-card-content">
-                <h3 className="course-title">{enrollment.courseId.courseName}</h3>
-                <p className="course-code">Code: {enrollment.courseId.courseCode}</p>
+                <h3 className="course-title">{enrollment.courseId[0].courseName}</h3>
+                <p className="course-code">Code: {enrollment.courseId[0].courseCode}</p>
                 <p className="course-instructor">Instructor: {enrollment.courseId.instructor}</p>
               </div>
             </li>

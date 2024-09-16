@@ -8,10 +8,11 @@ export default async function handler(req, res) {
 
   if (method=='POST') {
       try {
-        const { userId, courseId, order_number, price, paymentId, payment_status } = req.body;
+        const { userId, email, courseId, order_number, price, paymentId, payment_status } = req.body;
 
         const newEnrollment = new Enrollment({
-          userId, // Wrap userId in an array
+          userId,
+          email, // Wrap userId in an array
           courseId: courseId, // Already an array
           order_number,
           price,
@@ -30,10 +31,10 @@ export default async function handler(req, res) {
       
     } else if(method=='GET') {
       try {
-        const { userId } = req.query;
+        const { email } = req.query;
   
         // Fetch the enrollment details for the user and populate course information
-        const enrollments = await Enrollment.find({ userId }).populate('courseId').exec();
+        const enrollments = await Enrollment.find({ email:email }).populate('courseId','courseName courseCode instructor');
   
         res.status(200).json({ status: 'success', data: enrollments });
       } catch (error) {

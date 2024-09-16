@@ -8,7 +8,7 @@ export default function CartPage() {
   const [profile, setProfile] = useState({});
   const [totalAmount, setTotalAmount] = useState(0);
   const [isLoading, setLoading] = useState(false);
-
+  const userId = localStorage.getItem('userId');
   useEffect(() => {
     fetchCartItems();
     fetchUserProfile();
@@ -25,17 +25,30 @@ export default function CartPage() {
     }
   };
 
+  // useEffect(() => {
+  //   // Calculate the total amount by summing the course prices
+  //   const total = cartItems.reduce((sum, item) => {
+  //     if (item.courseId && item.courseId.length > 0 && item.courseId.coursePrice) {
+  //       return sum + parseFloat(item.courseId.coursePrice); // Ensure coursePrice is a number
+  //     }
+  //     return sum;
+  //   }, 0);
+  //   setTotalAmount(total);
+  // }, [cartItems]);
+
   useEffect(() => {
     // Calculate the total amount by summing the course prices
     const total = cartItems.reduce((sum, item) => {
-      if (item.courseId && item.courseId.length > 0 && item.courseId[0].coursePrice) {
-        return sum + parseFloat(item.courseId[0].coursePrice); // Ensure coursePrice is a number
+      // Ensure courseId and coursePrice exist and coursePrice is parsed as a number
+      if (item.courseId && item.courseId.coursePrice) {
+        return sum + parseFloat(item.courseId.coursePrice); // Ensure coursePrice is a number
       }
       return sum;
     }, 0);
+    
     setTotalAmount(total);
   }, [cartItems]);
-
+  
   const fetchUserProfile = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -58,7 +71,9 @@ export default function CartPage() {
       const storedEmail = localStorage.getItem('Email');
       await axios.delete('/api/cart', { data: { email: storedEmail, courseId } });
 
-      setCartItems(cartItems.filter((item) => item.courseId[0]._id !== courseId));
+      // setCartItems(cartItems.filter((item) => item.courseId[0]._id !== courseId));
+      setCartItems(cartItems.filter((item) => item.courseId._id !== courseId));
+
     } catch (error) {
       console.error('Error removing from cart:', error);
     }
@@ -90,11 +105,12 @@ export default function CartPage() {
         // Delay the redirection to the Chapa payment page
         setTimeout(() => {
           window.location.href = data.data.checkout_url; // Redirect to Chapa payment page
-        }, 30000); // Add a delay of 2 seconds before redirecting
-        
-        //save enrollment
+        }, 3000); // Add a delay of 3 seconds before redirecting (adjust the delay as necessary)
+  
+        // First, save the enrollment
         await saveEnrollment(cartItems, profile);
-        // Clear cart after confirming the payment is successful
+  
+        // Only after successful enrollment, delete cart items
         await fetch('/api/cart', {
           method: 'DELETE',
           headers: {
@@ -114,6 +130,7 @@ export default function CartPage() {
       setLoading(false); // Stop loading
     }
   };
+  
   const saveEnrollment = async (cartItems, profile) => {
     try {
       const response = await fetch('/api/enroll', {
@@ -121,9 +138,11 @@ export default function CartPage() {
         headers: {
           'Content-Type': 'application/json',
         },
+       
         body: JSON.stringify({
-          userId: profile._id, // Use the logged-in user's ID
-          courseIds: cartItems.map(item => item.courseId[0]._id), // Map all course IDs from the cart
+          userId:userId,
+          email: profile.email, // Use the logged-in user's ID
+          courseId: cartItems.map(item => item.courseId._id), // Map all course IDs from the cart
           order_number: `ORDER-${Date.now()}`, // Generate a unique order number
           price: totalAmount,
           paymentId: 'some-payment-id', // Replace with actual payment ID if available
@@ -154,13 +173,16 @@ export default function CartPage() {
           <ul className="cartItemsList">
             {cartItems.map((item) => (
               <li key={item._id} className='cartItem'>
-                {item.courseId && item.courseId.length > 0 ? 
+                {/* {item.courseId && item.courseId.length > 0 ? 
                   item.courseId[0].courseName : 
                   'Course Name Not Available'
-                }
-                <button onClick={() => handleRemoveFromCart(item.courseId._id)} 
+                } */}
+                {item.courseId && item.courseId.courseName ? 
+                  item.courseId.courseName : 
+                  'Course Name Not Available'}
+                <button onClick={() => handleRemoveFromCart(item?.courseId?._id)} 
                     className='removeButton'>Remove</button><br/>
-                {/* {item.courseId[0].coursePrice} */}
+                 {item?.courseId?.coursePrice} 
               </li>
             ))}
           </ul>

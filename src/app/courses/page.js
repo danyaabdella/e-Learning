@@ -96,7 +96,7 @@ const Dashboard = () => {
       return;
     }
     // Check if the course is already in the cart
-    if (cartItems.some(item => item.courseId._id === courseId)) {
+    if (cartItems.some(item => item?.courseId?._id === courseId)) {
       alert("Course is already in the cart.");
       return;
     }
