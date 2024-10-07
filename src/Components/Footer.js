@@ -11,6 +11,7 @@
 import React from 'react';
 import Image from 'next/image';
 import '../styles/footer.css';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -34,9 +35,9 @@ const Footer = () => {
         </div>
         <div>
           <h1 className="footer_heading">Quick link</h1>
-          <p className="footer_link">Courses</p>
-          <p className="footer_link">Insructor</p>
-          <p className="footer_link">Privacy Police</p>
+          <Link href={'/courses'} className="footer_link">Courses</Link><br/>
+          <Link href={'/'} className="footer_link">Insructor</Link><br/>
+          <Link href={'/'} className="footer_link">Privacy Police</Link><br/>
         </div>
         <div>
           <h1 className="footer_heading">Subscribe our Newsletter</h1>

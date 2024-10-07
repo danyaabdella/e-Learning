@@ -4,13 +4,7 @@
     
 }
 .small-div {
-    @apply bg-blue-300 shadow-md rounded mb-4 w-64  p-4 py-4 h-72;
-    /* background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
-    /* height: 200px; /* Adjust height as necessary 
-    color: white; 
-     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4; */
+    @apply bg-blue-300 shadow-md rounded mb-4 w-64  p-4 py-4 h-72 cursor-pointer  transition-transform duration-300 hover:scale-110 ease-in-out;
 }
 .h2 {
     @apply text-lg;
@@ -45,16 +39,16 @@
     @apply block mb-2 ;
   }
   .HI {
-    @apply  p-2 pl-10 text-sm text-gray-700 ;
+    @apply  p-2 pl-10 text-sm text-gray-700 mb-4 ;
   }
   .upSave {
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm ;
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm mt-4 ;
   }
   .upCancel {
-    @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2 text-sm;
+    @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2 text-sm mt-4 ;
   }
   .update {
-    @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm;
+    @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm mt-4;
   }
   .createc {
     @apply flex justify-center mb-4;
@@ -144,4 +138,10 @@
   }
   .not-approved p {
     @apply text-center text-gray-600 mt-4
+  }
+  .spinner {
+    @apply flex justify-center items-center h-screen;
+  }
+  .spinnerCircle {
+    @apply w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin;
   }

@@ -39,7 +39,7 @@ export default async function handler(req, res) {
         const subject = 'New Instructor Signup';
         const text = `A new instructor has signed up with the email: ${email}.`;
         const html = `<p>A new instructor has signed up with the email: <strong>${email}</strong>.</p>`;
-        await sendEmail(adminEmail, subject, text, userId, email);
+        await sendEmail(adminEmail, subject, text, html);
       }
       
       // Respond with a success message

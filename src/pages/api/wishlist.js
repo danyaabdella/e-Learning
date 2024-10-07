@@ -6,26 +6,27 @@ export default async (req,res) => {
     await db.connect();
 
     if(method==='POST') {
-        const {email, courseCode} = req.body;
+        const {email, courseId} = req.body;
+        
         const wish = new Wishlist({
             email,
-            courseCode,
+            courseId,
         })
         await wish.save();
         return res.status(201).json(wish);
 
     } else if(method==='DELETE') {
-        const {email, courseCode} = req.body;
-        const deletedWishlistItem = await Wishlist.findOneAndDelete({email,courseCode});
+        const {email, courseId} = req.body;
+        const deletedWishlistItem = await Wishlist.findOneAndDelete({email,courseId});
         if (!deletedWishlistItem) {
             return res.status(404).json({ message: 'Wishlist item not found' });
           }
   
           return res.status(200).json({ message: 'Wishlist item deleted successfully' });
     } else if(method==='GET') {
-        const { email } = req.body;
+        const { email } = req.query;
 
-        const wishlistItems = await Wishlist.find({ email });
+        const wishlistItems = await Wishlist.find({ email }).populate('courseId', 'image courseName courseCode');
 
         return res.status(200).json(wishlistItems);
     } else {

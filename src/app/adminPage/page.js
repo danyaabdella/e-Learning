@@ -92,7 +92,9 @@ const Admin = () => {
   };
 
   if (isApproved === null) {
-    return <div>Loading...</div>; // Show a loading message while checking approval status
+    return <div className='spinner'>
+      <div className='spinnerCircle'></div>
+    </div>; // Show a loading message while checking approval status
   }
   if (!isApproved) {
     return (
@@ -125,6 +127,7 @@ const Admin = () => {
         }}>
         </div>
           {/* {console.log(course.image)} */}
+            <p className="text">Course Category:{course.courseCategory}</p>
             <p className="text">Course name:{course.courseName}</p>
             <p className="text">Course code:{course.courseCode}</p>
             

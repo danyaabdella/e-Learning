@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import '../../../styles/course.css';
 import axios from 'axios';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const CourseDetail = () => {
@@ -16,6 +16,7 @@ const CourseDetail = () => {
   const [isDirty, setIsDirty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     if (courseId) {
@@ -30,8 +31,8 @@ const CourseDetail = () => {
   
       const updatedChapters = response.data.map(chapter => ({
         ...chapter,
-        video: chapter.video || null,    // Ensure video URL is set correctly
-        document: chapter.document || null, // Ensure document URL is set correctly
+        video: chapter.videos ,  // Ensure video URL is set correctly
+        document: chapter.documents , // Ensure document URL is set correctly
       }));
       
       setChapters(updatedChapters || [{ title: '', video: null, document: null }]);
@@ -61,6 +62,11 @@ const CourseDetail = () => {
   };
 
   const handleChapterChange = (index, field, e) => {
+    // const file = e.target.files[0];
+    // if (file && file.size > 20 * 1024 * 1024 * 1024) { // Check if the file exceeds 10MB
+    //   alert('File size exceeds 10MB limit.');
+    //   return;
+    // }
     const updatedChapters = chapters.map((chapter, chapterIndex) => (
       chapterIndex === index
         ? { 
@@ -106,33 +112,48 @@ const CourseDetail = () => {
     setIsLoading(true); // Show loading spinner
     setMessage('');
     try {
+      for (let i = 0; i < chapters.length; i++) {
+        const chapter = chapters[i];
+        if (!chapter.video) {
+          alert(`Video is required for chapter ${i + 1}`);
+          throw new Error(`Video is required for chapter ${i + 1}`);
+        }
+      }
       const chapterPromises = chapters.map(async (chapter, index) => {
         const formData = new FormData();
     
         formData.append('courseId', courseId);
         formData.append('title', chapter.title);
   
-        if (chapter.video) {
+        // Append video if it's a valid file
+        if (chapter.video && chapter.video instanceof File) {
           formData.append('video', chapter.video);
-        } else {
-          alert(`Video is required for chapter ${index + 1}`);
-          throw new Error(`Video is required for chapter ${index + 1}`);
         }
-  
-        if (chapter.document) {
+        if (chapter.document && chapter.document instanceof File) {
           formData.append('document', chapter.document);
         }
   
-        const response = await axios.post('/api/chapter', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-  
-        return response.data.chapterId; // Get the chapter ID from response
+        if (chapter._id) {
+          // If chapter exists, use PUT method
+          const response = await axios.put(`/api/chapter?_id=${chapter._id}`, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+          return response.data.chapterId; // Return the chapter ID
+        } else {
+          // If it's a new chapter, use POST method
+          const response = await axios.post('/api/chapter', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+          return response.data.chapterId; // Get the chapter ID from response
+        }
       });
   
       const chapterIds = await Promise.all(chapterPromises);
+      
   
       // Now update the main course with the chapterIds, overview, and requirement
       await axios.put(`/api/courseId/`, {
@@ -150,8 +171,11 @@ const CourseDetail = () => {
       setMessage('Error saving changes.');
     } finally {
       setIsLoading(false); // Hide loading spinner
-    }
+    };
   };
+  const addQuiz = (chapterId) => {
+    router.push(`/myQuiz/${chapterId}`);
+  }
   
 
   return (
@@ -234,32 +258,38 @@ const CourseDetail = () => {
                 onChange={(e) => handleChapterChange(index, 'video', e)}
                 className="chapter-input"
               />
-
+              {chapter.video && (
+                <video controls className="chapter-video-preview">
+                  <source src={chapter.video instanceof File ? URL.createObjectURL(chapter.video) : chapter.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
               {/* Render local file preview if video is a File object, otherwise render the server URL */}
-              {chapter.video && chapter.video instanceof File && (
-                <video src={URL.createObjectURL(chapter.video)} controls className="chapter-file-preview" />
-              )}
-              {chapter.video && !(chapter.video instanceof File) && (
-                <video src={chapter.video} controls className="chapter-file-preview" />
-              )}
 
               {/* Document Input and Preview */}
               <label htmlFor={`document-${index}`} className="chapter-section">Document</label>
               <input
                 type="file"
                 id={`document-${index}`}
-                accept=".pdf, .doc, .docx, .txt"
+                accept=".pdf,.doc,.docx,.ppt,.pptx"
                 onChange={(e) => handleChapterChange(index, 'document', e)}
                 className="chapter-input"
               />
-
-              {/* Render local file preview if document is a File object, otherwise render the server URL */}
-              {chapter.document && chapter.document instanceof File && (
-                <a href={URL.createObjectURL(chapter.document)} target="_blank" rel="noopener noreferrer">View Document</a>
+              {chapter.document && (
+                <a
+                  href={chapter.document instanceof File ? URL.createObjectURL(chapter.document) : chapter.document}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="chapter-document-link"
+                >
+                  View Document
+                </a>
               )}
-              {chapter.document && !(chapter.document instanceof File) && (
-                <a href={chapter.document} target="_blank" rel="noopener noreferrer">View Document</a>
-              )}
+              
+              <button className='quizBtn' onClick={()=>addQuiz(chapter._id)}>
+                Add quiz
+              </button>
+              
               <button onClick={() => removeChapter(index)} className="chapter-remove-btn">
                 <i className="fa fa-trash" aria-hidden="true"></i>
               </button>

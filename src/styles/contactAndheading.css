@@ -60,10 +60,10 @@
 }
 
 .about-image-container {
-    @apply lg:flex lg:items-center lg:justify-between;
+    @apply  lg:flex lg:items-center lg:justify-between;
 }
 .about-image-container2 {
-    @apply lg:w-1/2;
+    @apply  flex-col w-1/2 justify-center mb-3 lg:w-1/2;
 }
 
 .about-image {

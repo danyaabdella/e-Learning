@@ -3,13 +3,13 @@
   @apply flex justify-center items-center min-h-screen bg-gray-100 flex-grow;
 }
 .left {
-    @apply flex h-screen;
+    @apply flex justify-center;
   }
 .right {
-  @apply w-1/2 ;
+  @apply justify-between p-4;
 }
 .form-container {
-    @apply space-y-4 border-indigo-500/100;
+    @apply space-y-4 border-indigo-500/100 w-full;
   }
   
   .input-field {

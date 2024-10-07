@@ -60,18 +60,18 @@ const Slider = () => {
                             <Image
                                 src={partner.img}
                                 alt="Partner Image"
-                                width={350}
-                                height={350}
+                                width={400}
+                                height={400}
                                 className="width"
                             />
                         </div>
                         <div className='div-container'>
-                            <div className='div-star'>
+                            {/* <div className='div-star'>
                                 <FaStar className='star'/>
                                 <FaStar className='star'/>
                                 <FaStar className='star'/>
                                 <FaStar className='star'/>
-                            </div>
+                            </div> */}
                             <p className='div-description'>
                                 {partner.description}
                             </p>
@@ -80,6 +80,7 @@ const Slider = () => {
                                 <p></p>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             ))}

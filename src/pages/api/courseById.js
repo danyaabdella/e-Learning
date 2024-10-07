@@ -21,7 +21,7 @@ export default async (req, res) => {
 
           // let courses;
           // if (instructor) {
-          const courses = await Course.find({ instructor: userId }).populate('instructor');
+          const courses = await Course.find({ userId: userId }).populate('instructor');
           console.log('course: ',courses);
           // } else {
           //   courses = await Course.find().populate('instructor');

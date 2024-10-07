@@ -1,0 +1,87 @@
+/* certificate.css */
+.certificate-container {
+    @apply flex justify-center items-center min-h-screen bg-gray-100;
+}
+
+.certificate-box {
+    @apply bg-white border border-gray-300 shadow-lg rounded-xl p-8 relative w-full max-w-3xl;
+}
+
+.certificate-header {
+    @apply text-center mb-8;
+}
+
+.certificate-title {
+    @apply text-4xl font-bold text-green-800 mb-2;
+}
+
+.certificate-subtitle {
+    @apply text-lg font-semibold text-gray-600;
+}
+
+.certificate-name {
+    @apply text-center my-6;
+}
+
+.certificate-name-text {
+    @apply text-3xl font-semibold text-gray-900;
+}
+
+.certificate-body {
+    @apply text-center mb-10;
+}
+
+.certificate-course {
+    @apply text-lg text-gray-600;
+}
+
+.certificate-course-title {
+    @apply text-2xl font-semibold text-gray-900 mt-2;
+}
+
+.certificate-footer {
+    @apply flex justify-between items-center mt-12;
+}
+
+.certificate-footer-text {
+    @apply text-gray-600;
+}
+
+.certificate-footer-signature {
+    @apply text-xl font-semibold text-gray-900;
+}
+
+.certificate-seal {
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6;
+}
+
+.seal-image {
+    @apply w-20 h-20;
+}
+.textLeft {
+    @apply text-left;
+}
+.textRight {
+    @apply text-right;
+}
+.div-download {
+    @apply flex justify-center mt-6;
+}
+.download-btn {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+.download-icon {
+    position: absolute;
+    top: 10px;  /* Adjust the top value as needed */
+    right: 10px;  /* Adjust the right value as needed */
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  .spinner {
+    @apply flex justify-center items-center h-screen;
+  }
+  .spinnerCircle {
+    @apply w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin;
+  }

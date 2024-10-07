@@ -19,6 +19,7 @@
     "cloudinary": "^2.4.0",
     "formidable": "^3.5.1",
     "graceful-fs": "^4.2.11",
+    "html2canvas": "^1.4.1",
     "js-tokens": "^4.0.0",
     "jsonwebtoken": "^9.0.2",
     "loose-envify": "^1.4.0",

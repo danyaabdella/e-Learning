@@ -23,33 +23,17 @@ export default async (req, res) => {
       break;
 
     case 'POST':
-      // upload.single('image')(req, res, async (err) => {
-      //   if (err) {
-      //     return res.status(500).json({ message: 'File upload error' });
-      //   }
-
-      //   const { courseName, courseCode, instructor } = req.body;
-      //   let imageUrl = '';
-
-      //   if (req.file) {
-      //     const result = await cloudinary.uploader.upload(req.file.path);
-      //     imageUrl = result.secure_url;
-      //   }
-
-      //   const course = new Course({
-      //     courseName,
-      //     courseCode,
-      //     instructor,
-      //     image: imageUrl, // Save the image URL
-      //   });
+      
 
       try {
-        // const{courseName, courseCode, instructor,image} = req.body;
-        const course = new Course(req.body);
+         const{courseCategory, courseName, courseCode, coursePrice, instructor, image, userId} = req.body;
+        const course = new Course({
+          courseCategory, courseName, courseCode, instructor, image, userId,
+        });
         console.log('course:', course);
         await course.save();
 
-        const adminEmail = 'abduibrahim5980@gmail.com'; // Replace with your admin's email
+        const adminEmail = 'danqueen670@gmail.com'; // Replace with your admin's email
         const subject = 'New Course Created';
         const text = `A new course named "${course.courseName}" has been created by ${course.instructor}.`;
         const html = `<p>A new course named "<strong>${course.courseName}</strong>" has been created by <strong>${course.instructor}</strong>.</p>`;

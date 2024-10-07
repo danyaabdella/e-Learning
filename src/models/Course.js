@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
 const courseSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   courseCategory:{type: String},
   courseName: { type: String, required: true, unique: true },
   courseCode: { type: String, required: true },
   coursePrice: {type: String},
-  instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  Std_Eld: [{ type:mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  instructor: { type: String, required:true },
   image: { type: String},
   ishome: { type: Boolean},
   isapproved: { type: Boolean},

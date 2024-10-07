@@ -49,7 +49,11 @@ const enrolmentSchema = new mongoose.Schema({
   created_at: {
     type: Date,
     default: Date.now
-  }
+  },
+  isCompleted: {
+    type:Boolean,
+    default: false
+  },
 }, {
   timestamps: false // Disables the automatic `createdAt` and `updatedAt` fields
 });

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Dashboard components */
+.page-div {
+    @apply min-h-screen bg-gray-100;
+}
+.header {
+  @apply bg-white shadow p-4 flex justify-between items-center;
+}
+.logo-div {
+    @apply text-xl font-bold text-blue-700;
+}
+.nav-links {
+  @apply space-x-4;
+}
+
+.nav-item {
+  @apply text-gray-600 hover:text-blue-700;
+}
+
+.avatar {
+  @apply bg-gray-300 text-gray-700 rounded-full w-10 h-10 flex items-center justify-center;
+}
+
+.main-content {
+  @apply max-w-7xl mx-auto py-6 px-4 lg:px-8;
+}
+
+.grid-layout {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+.welcome-div {
+    @apply lg:col-span-2;
+}
+.welcome-card {
+  @apply bg-white shadow rounded-lg p-6;
+}
+.header2 {
+    @apply text-2xl font-semibold mb-4;
+}
+.course-div {
+    @apply bg-white rounded-lg overflow-hidden shadow-lg;
+}
+.course-img {
+  @apply w-full h-48 object-cover;
+}
+.progress-div {
+    @apply p-4;
+}
+.header3 {
+    @apply text-xl font-bold mb-2;
+}
+.progress-div-div {
+    @apply relative pt-1
+}
+.flexbox {
+    @apply flex mb-2 items-center justify-between;
+}
+.progress-span {
+    @apply text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200;
+}
+
+.progress-bar {
+  @apply overflow-hidden h-2 text-xs flex rounded bg-blue-200;
+}
+
+.progress-bar-filled {
+  @apply shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600;
+}
+.completion-percent {
+    @apply text-sm mt-2;
+}
+.view-link {
+    @apply text-blue-600 hover:underline text-sm;
+}
+.stat-list {
+  @apply bg-white shadow rounded-lg p-6;
+}
+
+.stat-item {
+  @apply flex justify-between items-center py-3 border-b border-gray-200;
+}
+
+.stat-title {
+  @apply flex items-center space-x-3;
+}
+
+.stat-value {
+  @apply font-bold text-xl;
+}
+.spinner {
+  @apply flex justify-center items-center h-screen;
+}
+.spinnerCircle {
+  @apply w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin;
+}

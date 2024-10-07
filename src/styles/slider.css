@@ -1,16 +1,19 @@
 
 .item {
-    @apply flex flex-wrap sm:flex-nowrap items-center space-x-10;
+    @apply flex flex-col sm:flex-row items-center space-x-0 sm:space-x-10;
+    @apply w-full h-48;
   }
 .height {
-    @apply h-full w-full;
+    @apply w-full sm:w-[50%] h-auto;
   }
   
   .width {
-    @apply w-full h-full;
+    @apply w-full object-cover ml-2 mt-2 ;
   }
 .div-container {
-  @apply mt-6 mb-6;
+   @apply  sm:w-[50%] w-full ; 
+  @apply flex-1; 
+  @apply flex flex-col;
 }
 .div-star {
   @apply flex items-center;
@@ -19,11 +22,15 @@
   @apply xl:w-7 xl:h-7 md:w-5 md:h-5 w-4 h-4 text-yellow-600;
 }
 .div-description {
-  @apply mt-6 text-gray-800 w-[95%] md:w-[80%] text-xs md:text-sm lg:text-base font-semibold text-opacity-65;
+  @apply  text-gray-800 w-[95%] md:w-[80%] text-xs md:text-sm  font-semibold text-opacity-65 flex-1 ;
+  @apply flex-1;
+  @apply break-words;
+  /* @apply overflow-wrap break-word; */
 }
 .div-name {
-  @apply mt-7;
+  @apply mt-1;
 }
 .name {
-  @apply text-xl text-black font-semibold;
-}
+  @apply  text-black font-semibold;
+} 
+

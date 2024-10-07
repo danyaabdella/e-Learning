@@ -34,14 +34,34 @@ export default async function handler(req, res) {
         const { email } = req.query;
   
         // Fetch the enrollment details for the user and populate course information
-        const enrollments = await Enrollment.find({ email:email }).populate('courseId','courseName courseCode instructor');
+        const enrollments = await Enrollment.find({ email:email }).populate('courseId','courseName image instructor chapters');
   
         res.status(200).json({ status: 'success', data: enrollments });
       } catch (error) {
         console.error('Error fetching enrollments:', error);
         res.status(500).json({ status: 'error', message: 'Error fetching enrollments' });
       }
-    }else {
+    } else if (method === 'PUT') {
+      try {
+        const { courseId, isCompleted } = req.body;
+  
+        // Update the enrollment status for the course
+        const updatedEnrollment = await Enrollment.findOneAndUpdate(
+          { 'courseId': courseId }, // Use the courseId to find the enrollment
+          { isCompleted: isCompleted }, // Update the isCompleted field
+          { new: true } // Return the updated document
+        );
+  
+        if (!updatedEnrollment) {
+          return res.status(404).json({ status: 'error', message: 'Enrollment not found' });
+        }
+  
+        res.status(200).json({ status: 'success', data: updatedEnrollment });
+      } catch (error) {
+        console.error('Error updating enrollment status:', error);
+        res.status(500).json({ status: 'error', message: 'Error updating enrollment status' });
+      }
+    } else {
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
       

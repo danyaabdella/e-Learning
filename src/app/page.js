@@ -1,6 +1,6 @@
 
 'use client';  // This directive ensures the component runs on the client-side
-
+import '../styles/globals.css';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -78,7 +78,7 @@ const Page = () => {
       
     <div className="container">
     <div className="left">
-      <Image src="/image.png" alt="E-learning" width={600} height={400} className="mx-auto" /> {/* Centered using mx-auto */}
+      <Image src="/image.png" alt="E-learning" width={600} height={400} className="mx" /> {/* Centered using mx-auto */}
     </div>
     <div className="right">
       <p>
@@ -89,7 +89,7 @@ const Page = () => {
     </div>
 </div>
 <div className="course-div">
-<h1 className="course-heading">Some of the courses available</h1>
+<h1 className="course-heading">Popular Courses</h1>
 <div className="course-list">
   {courses.map((course) => (
     <div onClick={handleCourseClick} key={course.id} className="course-item">

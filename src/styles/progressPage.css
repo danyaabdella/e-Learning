@@ -1,0 +1,93 @@
+.course-progress {
+    @apply bg-blue-900 text-white py-6 px-8;
+  }
+  .header2 {
+    @apply text-lg font-bold;
+  }
+  .course-details {
+    @apply bg-blue-800 p-4 rounded-md;
+  }
+  .header3 {
+    @apply font-semibold;
+  }
+  .course-resume-btn {
+    @apply mt-4 bg-lime-400 text-blue-900 py-2 px-4 rounded-md font-bold;
+  }
+  
+  .progress-bar-container {
+    @apply mt-4 w-full bg-gray-300 rounded-full h-1.5;
+  }
+  
+  .progress-bar {
+    @apply bg-lime-500 h-1.5 rounded-full;
+  }
+  .progress-percent {
+    @apply mt-2 text-right;
+  }
+  .curriculum-container {
+    @apply bg-white p-8 shadow-md mt-4 rounded-lg;
+  }
+  
+  .curriculum-header {
+    @apply flex items-center justify-between;
+  }
+  
+  .curriculum-title {
+    @apply font-semibold text-lg;
+  }
+  
+  .curriculum-overview {
+    @apply text-sm text-blue-600 border-b-2 border-blue-600;
+  }
+  .curriculum-div {
+    @apply flex items-center mt-6 space-x-4;
+  }
+  
+  .curriculum-progress-circle {
+    @apply w-16 h-16 flex items-center justify-center text-lg font-bold text-green-600 border-4 border-green-400 rounded-full;
+  }
+  
+  .curriculum-lesson-container {
+    @apply flex-1;
+  }
+  
+  .curriculum-lesson-header {
+    @apply font-semibold;
+  }
+  
+  .lesson-footer {
+    @apply flex justify-between items-center mt-2;
+  }
+  
+  .lesson-status {
+    @apply text-sm text-gray-500;
+  }
+  
+  .lesson-complete-btn {
+    @apply text-blue-600;
+  }
+  .expanded-content {
+    @apply mt-4 space-y-4;
+}
+
+.video-section {
+    @apply w-full h-60 bg-gray-200 rounded-lg;
+}
+
+.video-player {
+    @apply w-full h-full rounded-lg;
+}
+
+.document-section {
+    @apply space-y-2;
+}
+
+.document-link {
+    @apply text-blue-600 underline;
+}
+.spinner {
+  @apply flex justify-center items-center h-screen;
+}
+.spinnerCircle {
+  @apply w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin;
+}

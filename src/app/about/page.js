@@ -38,7 +38,7 @@ export default function AboutPage() {
 
                 <div className="about-image-container">
                     <div className="about-image-container2">
-                        <Image src={imageUrl} alt="E-Learning" className="about-image" width={600} height={400}/>
+                        <Image src={imageUrl} alt="E-Learning" className="about-image" width={300} height={300}/>
                     </div>
                     <div className="about-content">
                         {content.map((item, index) => (

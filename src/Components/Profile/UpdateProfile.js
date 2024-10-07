@@ -54,8 +54,12 @@ const UpdateProfile = () => {
       let response;
       if (avatar) {
         const formData = new FormData();
-        Object.entries(profileData).forEach(([key, value]) => {
-          formData.append(key, value);
+        // Object.entries(profileData).forEach(([key, value]) => {
+        //   formData.append(key, value);
+        // });
+        formData.append('avatar', avatar); // Ensure this line adds the avatar file
+        Object.keys(textData).forEach((key) => {
+          formData.append(key, textData[key]);
         });
 
         response = await axios.put('/api/profile', formData, {
@@ -74,7 +78,10 @@ const UpdateProfile = () => {
         });
       }
 
-      alert('Profile updated successfully!');
+      
+      if (response.status === 200) {
+        alert('Profile updated successfully!');
+      }
     } catch (error) {
       console.error('Error updating profile:', error);
       setError('Failed to update profile');

@@ -66,13 +66,13 @@ const Dashboard = () => {
         window.location.href = '/signup';
         return;
       } else {
-      const courseInWishlist = wishlist.some(item => item.courseCode === course.courseCode);
+      const courseInWishlist = wishlist.some(item => item.courseId === course._id);
       if(courseInWishlist) {
         try {
           await axios.delete('/api/wishlist', {
-          data: { email, courseCode: course.courseCode }
+          data: { email, courseId: course._id }
         })
-        setWishlist(wishlist.filter(item => item.courseCode !== course.courseCode));
+        setWishlist(wishlist.filter(item => item.courseId !== course._id));
         } catch(error) {
           console.error('Error removing from the wishlist:', error );
         }
@@ -80,9 +80,9 @@ const Dashboard = () => {
         try {
           await axios.post('/api/wishlist', {
             email,
-            courseCode: course.courseCode,
+            courseId: course._id,
           })
-        setWishlist([...wishlist,{email,courseCode: course.courseCode}]);
+        setWishlist([...wishlist,{email,courseId: course._id}]);
         } catch(error) {
           console.error('Error adding to the wishlist:', error);
         }
@@ -127,7 +127,7 @@ const Dashboard = () => {
          >
           {isLoggedIn && (
               <span
-                className={`wishlist-icon  ${wishlist.some(item => item.courseCode === course.courseCode) ? 'wishlist-icon-true' : 'wishlist-icon-false'}`}
+                className={`wishlist-icon  ${wishlist.some(item => item.courseId === course._id) ? 'wishlist-icon-true' : 'wishlist-icon-false'}`}
                 onClick={() => toggleWishlist(course)}
               >
                 ★

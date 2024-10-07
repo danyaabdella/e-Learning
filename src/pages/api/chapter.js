@@ -6,7 +6,7 @@ import db from '@/utils/db';
 // Setup Multer for File Uploads
 const upload = multer({
   storage: multer.diskStorage({}),
-  limits: { fileSize: 10 * 1024 * 1024 }, // Limit the file size to 10MB
+  limits: { fileSize: 20 * 1024 * 1024 * 1024 }, // Limit the file size to 10MB
 });
 
 export const config = {
@@ -19,16 +19,26 @@ export const config = {
 export default async function handler(req, res) {
   await db.connect();
 
-  if (req.method === 'POST') {
+  try {
+    if (req.method === 'POST') {
     upload.fields([{ name: 'video' }, { name: 'document' }])(req, res, async (err) => {
       if (err) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ error: 'File is too large. Maximum size allowed is 10MB.' });
+        }
         console.error('Multer Error:', err);
         return res.status(500).json({ error: 'File upload failed' });
       }
-
       const { courseId, title } = req.body;
       const video = req.files.video ? req.files.video[0] : null;
       const document = req.files.document ? req.files.document[0] : null;
+
+      const existingChapter = await Chapter.findOne({ courseId, title });
+
+        if (existingChapter) {
+          return res.status(409).json({ error: 'Chapter already exists' });
+        }
+
 
       try {
         let videoUrl = '';
@@ -89,9 +99,27 @@ export default async function handler(req, res) {
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
+    } else if(req.method==='PUT') {
+      const {
+        query: { _id }, // Get the chapter ID from the URL
+        body,
+      } = req;
+      try {
+        const updatedChapter = await Chapter.findByIdAndUpdate(_id, body, { new: true, runValidators: true });
+        if (!updatedChapter) {
+          return res.status(404).json({ success: false, message: 'Chapter not found' });
+        }
+        res.status(200).json({ success: true, chapterId: updatedChapter._id });
+      } catch (error) {
+        res.status(400).json({ success: false, message: 'Error updating chapter', error });
+      }
+
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
-   
+  } catch (error) {
+    console.error(error); // Log the error to the server logs
+    return res.status(500).json({ message: 'Server Error' });
+  }
    
 }
