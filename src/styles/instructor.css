@@ -1,0 +1,47 @@
+/* instructorPageStyles.css */
+
+.container {
+    @apply mx-auto p-6;
+}
+
+.spinner {
+    @apply flex justify-center items-center h-screen;
+}
+
+.spinnerCircle {
+    @apply border-t-4 border-b-4 border-blue-500 w-12 h-12 rounded-full animate-spin;
+}
+
+.textTitle {
+    @apply text-2xl font-bold mb-4;
+}
+
+.errorText {
+    @apply text-red-500;
+}
+
+.gridContainer {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.card {
+    @apply bg-white shadow-lg p-6 rounded-lg;
+}
+
+.avatar {
+    @apply w-32 h-32 rounded-full mx-auto mb-4;
+}
+
+.instructorName {
+    @apply text-xl font-semibold text-center;
+}
+
+.instructorDetails {
+    @apply text-center text-gray-600;
+}
+.spinner {
+    @apply flex justify-center items-center h-screen;
+  }
+.spinnerCircle {
+    @apply w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin;
+}

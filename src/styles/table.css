@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom classes */
-.heading {
+
+/* .heading {
     @apply text-2xl font-bold mb-4;
 }
 .header {
@@ -11,20 +11,23 @@
     
 }
 .content-container {
-    @apply w-full max-w-4xl mx-auto; /* Center content and limit width */
+    @apply w-full max-w-4xl mx-auto; 
 }
 .T {
-    @apply min-w-full bg-white border border-gray-200;
+    @apply lg:min-w-full bg-white border border-gray-200;
+    @apply sm:min-w-full; 
    
 }
 .header2 {
     @apply overflow-x-auto;
 }
 .table-header {
-  @apply px-4 py-2 bg-gray-100 text-left font-semibold;
+  @apply lg:px-4 lg:py-2 bg-gray-100 text-left font-semibold;
+  @apply sm:px-2 sm:py-1; 
 }
 .table-cell {
   @apply px-4 py-2 border-t border-gray-200;
+  @apply sm:px-2 sm:py-1;
 }
 .loading-text {
   @apply text-blue-500 text-lg;
@@ -33,15 +36,94 @@
   @apply text-red-500 text-lg;
 }
 
-/* New Custom classes for side-by-side tables */
+
 .tables-container {
-  /* @apply flex space-x-8 min-h-screen; Use flexbox to align side by side and add space between them */
-  @apply flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 ;
+  
+  @apply justify-center grid mx-20 sm:mx-4 grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-5 overflow-x-hidden;
 }
 
 .table-section {
-  @apply flex-1; /* Make each table section flexible to take equal space */
+  @apply flex-1; 
+  @apply lg:text-lg md:text-xs; 
+  @apply sm:w-full sm:text-sm; 
 }
 .roleBtn {
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply sm:py-1 sm:px-2; 
+} */
+ /* Custom classes */
+.heading {
+  @apply text-2xl font-bold mb-4;
+}
+.header {
+  @apply p-1 bg-gray-100 min-h-screen flex flex-col items-center;
+}
+
+.T {
+  @apply w-full bg-white border border-gray-200;
+}
+
+.header2 {
+  /* @apply overflow-x-auto; */
+}
+.table-header {
+  @apply px-4 py-2 bg-gray-100 text-left font-semibold;
+}
+
+.table-cell {
+  @apply px-1 py-2 border-t border-gray-200;
+}
+
+.loading-text {
+  @apply text-blue-500 text-lg;
+}
+
+.error-text {
+  @apply text-red-500 text-lg;
+}
+
+/* Container for responsive tables */
+.tables-container {
+  @apply grid grid-cols-1 gap-5 mx-4 md:grid-cols-2 lg:grid-cols-2;
+}
+
+/* Styling for individual table sections */
+.table-section {
+  @apply flex-1 text-sm;
+}
+
+/* Responsive button styling */
+.roleBtn {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply text-sm sm:text-xs;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 640px) {
+  .heading {
+    font-size: 1.5rem; /* Make heading smaller on mobile */
+  }
+
+  .table-cell {
+    font-size: 0.75rem; /* Make table cells smaller on mobile */
+  }
+  
+
+  .roleBtn {
+    padding: 0.3rem 0.5rem; /* Adjust button padding on small screens */
+  }
+
+  .tables-container {
+    grid-template-columns: 1fr; /* Stack tables on top of each other on small screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .header2 {
+    font-size: 1.125rem; /* Larger font for headers on larger screens */
+  }
+
+  .table-cell {
+    font-size: 1rem; /* Increase table cell font size on larger screens */
+  }
 }

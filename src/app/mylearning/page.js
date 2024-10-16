@@ -313,7 +313,7 @@ export default function Dashboard() {
                 {[
                   // { title: 'Concepts Viewed', value: 119, icon: '📄' },
                   { title: 'Chapters Viewed', value: chaptersCompleted, icon: '📚' },
-                  { title: 'Quizzes Completed', value: 59, icon: '💬' },
+                  { title: 'Quizzes Completed', value: 0, icon: '💬' },
                   { title: 'Programs Completed', value: coursesCompleted, icon: '🎓' },
                   // { title: 'Projects Passed', value: 0, icon: '🔨' },
                 ].map((stat, index) => (

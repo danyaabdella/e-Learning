@@ -75,19 +75,26 @@ const Page = () => {
 
   return (
     <>
-      
+    
     <div className="container">
+    <div className="right">
+      <h1 className='header1'>Don't limit your <span className='spanner'>education</span><br></br>to place</h1>
+      
+    </div>  
     <div className="left">
       <Image src="/image.png" alt="E-learning" width={600} height={400} className="mx" /> {/* Centered using mx-auto */}
     </div>
-    <div className="right">
-      <p>
+   
+</div>
+{/* <div   
+  className='bg-Image' >
+    <p className='paragraph'>
         An electronic learning platform is an integrated set of interactive online services that provide trainers, 
         learners, and others involved in education with information, tools, and resources to support and enhance 
         education delivery and management. One type of eLearning software is a learning management system (LMS).
-      </p>
-    </div>
-</div>
+      </p> 
+</div> */}
+    
 <div className="course-div">
 <h1 className="course-heading">Popular Courses</h1>
 <div className="course-list">

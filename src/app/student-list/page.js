@@ -132,7 +132,7 @@ export default function ListPage() {
 
               {/* Second Table for New Instructors */}
               <div className="table-section">
-                <h2>New Instructors</h2>
+                <h2 className='header2'>New Instructors</h2>
                 <table className="T">
                   <thead>
                     <tr>

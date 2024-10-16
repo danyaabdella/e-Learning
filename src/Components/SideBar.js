@@ -74,10 +74,10 @@ const SideBar = () => {
               <Link href='dashboard' className="sidebar-link">
                 Dashboard
               </Link>
-              <Link href='student-list' className="sidebar-link">
+              <Link href='/student-list' className="sidebar-link">
                 Users
               </Link>
-              <Link href='course-list' className="sidebar-link">
+              <Link href='/course-list' className="sidebar-link">
                 Courses
               </Link>
               <Link href="/partner" className="sidebar-link">
