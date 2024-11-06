@@ -1,6 +1,6 @@
 // pages/quiz.js
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import '../../styles/quiz.css';
@@ -89,6 +89,7 @@ const QuizPage = () => {
     const allQuestionsAnswered = Object.keys(userAnswers).length === quizQuestions.length;
 
     return (
+        <Suspense fallback={<div>Loading...</div>}>
         <div className='box'>
             <h1 className='header'>Quiz</h1>
             <form onSubmit={handleSubmit} className='form'>
@@ -156,6 +157,7 @@ const QuizPage = () => {
                 </div>
             )}
         </div>
+         </Suspense>
     );
 };
 

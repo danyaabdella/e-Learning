@@ -2,7 +2,7 @@
 import CourseNav from '@/Components/CourseNav';
 import '../../styles/progressPage.css';
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import axios from 'axios'; // Import axios
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from 'next/link';
@@ -15,7 +15,6 @@ const ProgressPage = () => {
     const [totalProgress, setTotalProgress] = useState(0); // Total course progress
     const [expandedChapters, setExpandedChapters] = useState({});
     const serchParams = useSearchParams();
-    const [courseId, setCourseId] = useState(null);
     const [chapterProgress, setChapterProgress] = useState({});
     const [userId, setUserId] = useState(null);
     
@@ -23,13 +22,7 @@ const ProgressPage = () => {
 
     // const [courseId, setCourseId] = useState(null);
 
-    //const courseId = serchParams.get('courseId');
-    useEffect(() => {
-        if (serchParams) {
-            const courseIdFromParams = serchParams.get('courseId');
-            setCourseId(courseIdFromParams);
-        }
-    }, [serchParams]);
+    const courseId = serchParams.get('courseId');
     useEffect(() => {
         // Ensure localStorage is accessed only on the client side
         if (typeof window !== 'undefined') {
@@ -141,6 +134,7 @@ const ProgressPage = () => {
     };
 
     return courseId ? (
+        <Suspense fallback={<div>Loading...</div>}>
         <>
             <CourseNav />
             <div className="course-progress">
@@ -212,10 +206,12 @@ const ProgressPage = () => {
                 ))}
             </div>
         </>
+        </Suspense>
         ) : (
             <div className="spinner">
                 <div className="spinnerCircle"></div>
             </div>
+           
         );
     
 };
