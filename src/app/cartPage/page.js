@@ -8,11 +8,19 @@ export default function CartPage() {
   const [profile, setProfile] = useState({});
   const [totalAmount, setTotalAmount] = useState(0);
   const [isLoading, setLoading] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const userId = localStorage.getItem('userId');
+
   useEffect(() => {
-    fetchCartItems();
-    fetchUserProfile();
+    setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      fetchCartItems();
+      fetchUserProfile();
+    }
+  }, [isClient]);
 
   const fetchCartItems = async () => {
     const storedEmail = localStorage.getItem('Email');
@@ -25,16 +33,7 @@ export default function CartPage() {
     }
   };
 
-  // useEffect(() => {
-  //   // Calculate the total amount by summing the course prices
-  //   const total = cartItems.reduce((sum, item) => {
-  //     if (item.courseId && item.courseId.length > 0 && item.courseId.coursePrice) {
-  //       return sum + parseFloat(item.courseId.coursePrice); // Ensure coursePrice is a number
-  //     }
-  //     return sum;
-  //   }, 0);
-  //   setTotalAmount(total);
-  // }, [cartItems]);
+  
 
   useEffect(() => {
     // Calculate the total amount by summing the course prices

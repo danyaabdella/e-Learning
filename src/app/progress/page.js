@@ -15,6 +15,7 @@ const ProgressPage = () => {
     const [totalProgress, setTotalProgress] = useState(0); // Total course progress
     const [expandedChapters, setExpandedChapters] = useState({});
     const serchParams = useSearchParams();
+    const [courseId, setCourseId] = useState(null);
     const [chapterProgress, setChapterProgress] = useState({});
     const [userId, setUserId] = useState(null);
     
@@ -22,7 +23,13 @@ const ProgressPage = () => {
 
     // const [courseId, setCourseId] = useState(null);
 
-    const courseId = serchParams.get('courseId');
+    //const courseId = serchParams.get('courseId');
+    useEffect(() => {
+        if (serchParams) {
+            const courseIdFromParams = serchParams.get('courseId');
+            setCourseId(courseIdFromParams);
+        }
+    }, [serchParams]);
     useEffect(() => {
         // Ensure localStorage is accessed only on the client side
         if (typeof window !== 'undefined') {

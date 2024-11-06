@@ -27,4 +27,4 @@ const RequestOtpPage = () => {
   );
 };
 
-export default ForgetPasswordPage;
+export default RequestOtpPage;
