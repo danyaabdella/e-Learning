@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import '../../styles/quiz.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const QuizPage = () => {
+const QuizPageContent = () => {
     const searchParams = useSearchParams();
     const chapterId = searchParams.get('chapterId');
     const [quizQuestions, setQuizQuestions] = useState([]);
@@ -158,6 +158,14 @@ const QuizPage = () => {
             )}
         </div>
          </Suspense>
+    );
+};
+
+const QuizPage = () => {
+    return (
+        <Suspense fallback={<div className="spinner"><div className="spinnerCircle"></div></div>}>
+            <QuizPageContent />
+        </Suspense>
     );
 };
 

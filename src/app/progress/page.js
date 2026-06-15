@@ -7,7 +7,7 @@ import axios from 'axios'; // Import axios
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from 'next/link';
 
-const ProgressPage = () => {
+const ProgressPageContent = () => {
     // const router = useRouter();
     // const params = useParams(); 
     const [chapters, setChapters] = useState([]);
@@ -214,6 +214,14 @@ const ProgressPage = () => {
            
         );
     
+};
+
+const ProgressPage = () => {
+    return (
+        <Suspense fallback={<div className="spinner"><div className="spinnerCircle"></div></div>}>
+            <ProgressPageContent />
+        </Suspense>
+    );
 };
 
 export default ProgressPage;

@@ -9,7 +9,7 @@ export default function CartPage() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [isLoading, setLoading] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const userId = localStorage.getItem('userId');
+  const userId = typeof window !== 'undefined' ? localStorage.getItem('userId') : null;
 
   useEffect(() => {
     setIsClient(true);
